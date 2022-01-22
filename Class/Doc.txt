@@ -1,0 +1,115 @@
+NOTE: if we are using windows home os that we have to install virtual box and then install windows pro then install docker tool box
+=> we have to enable virtualization in pc to use docker tool box VM 
+
+=> While learning this tutorial docker tool box is depricated and the new Docker Desktop version came out
+
+=> Setup:
+    -> install Docker Desktop
+    -> install Ubuntu (WSL v2) while this tutorial
+        -> in Ubuntu terminal:
+            -> docker run -d -p 80:80 docker/getting-started
+            -> if it says Go permission denied then:
+                -> sudo groupadd docker
+                -> sudo usermod -aG docker ${USER}
+                -> su - ${USER}
+                -> docker ps -a (to test)
+                -> finally:
+                    -> docker run -d -p 80:80 docker/getting-started
+
+-> docker version (in terminal)
+    -> Client:
+    -> Server:
+        -> docker have two componend which are client and server
+            -> Client:
+                -> from where we are using docker 
+            -> Server:
+                -> where docker is running
+
+-> docker run hello-world
+
+#) Why Should we use Docker?
+    step 01: Get require software
+                * Find out the right software
+                * Download the install & run it
+    step 02: Get Error
+                * Cannot install on this machine or maybe
+                * Installer require Python 3.6 (error could be any thing)
+    step 03: Trobleshoot issue
+                * Re run installer
+                * Get another error
+
+    -> so in case of using docker it will containerize the software and after that we can run this application in any OS
+
+#) What is Docker?
+    -> When we say Docker we are not talking about one peace of software or machine
+    -> When we say Docker we are talking about entire ecosystem of Docker Products.
+    -> It include Docker client, Docker server, Docker maching, Docker hub, Docker compose etc.
+
+
+#) Docker Client and Docker Server
+    -> Docker client is a tool we issue commands to for reaching out to docker daemon(docker server)
+    -> The Docker doemon is a service that runs on your host operating system. it is responsible for running containers
+
+    -> when we will command:
+        -> docker run hello-world
+            -> Docker client and server will receive the request and check does 'hello-world' image avilable in the pc if it is avilable it means that, that image had been stored as the cache into the pc and it will get that image and install it from the cache
+            -> if it didn't find the image in the cache then it get the image from the free service called docker hub and make a container for that
+                -> https://hub.docker.com/
+
+*) DockerFile:
+    -> A DockerFile is a blueprint for building a docker image
+
+*) Image:
+    -> image software contain all of those essential data that is needed to create a container like dependencies
+    -> or docker image is a template to run docker container
+    -> image contain:
+        -> file system(fs) snapshot
+            -> ex: we have a chrome browser which container bin, lib folder and files
+        -> startup command
+            -> ex: let's say chrome.exe is the startup command so, when we will request docker server to convert image into container then it will get all those file system snapshot and put in certain segment of harddisk in pc
+
+*) Container:
+    -> Docker Container is the running process
+    -> Docker Container contain software, resources
+    -> Which runs into our computer and consume memory and cpu processing
+    -> in Image example that we use for chrome container get the allocated isolated space in the harddisk and to run the chrome it will run the startup command and process it according to it's resources that are avilable inside the container
+
+-> docker run busybox
+    -> it will install the image
+        -> docker run busybox echo hello roman
+            -> <docker run busybox> => run busybox image and create a container
+            -> <echo hello roman> => and the startup command of that container run it by 'hello roman'
+
+        -> docker run busybox ping youtube.com
+        -> docker run busybox ls
+            -> will who us the folder inside the busybox
+        -> docker run busybox sh
+            -> it will run the shell and come out of that shell
+
+*) Command
+        -> docker ps (show all the images that are running)
+            -> Container id: container id will uniquilly identify the container
+            -> Image: image is the name of that image
+            -> Command: startup command
+
+        -> docker image (show all the images)
+
+        -> docker ps --all (show all the image that are running and had run already)
+
+        -> docker stop <CONTAINER ID> (to stop running docker container by the process which is needed to stop the container)
+        -> docker kill <CONTAINER ID> (if by commanding docker stop if container didn't responde and stop the container then we will kill or terminate that container)
+
+        -> docker run (container two command [docker create + docker start])
+
+        -> docker create hello-world (this will create a 'hello-world' container)
+
+        -> docker start -a 4e62437a1204a3caaf4a66835b6e52c45f06aa86eb5c6374165753f91d42dff8 (this will start the container)
+            -> -a(attached) display the output that contain inside the container
+
+        -> docker run redis (to run docker image):
+            -> docker logs <redis Container ID> (it will show that contain inside the container)
+
+        -> docker exec -i -t <Container ID> sh (to go inside the shell of that container and run can run other command as well)
+                -> -i (it will run the command which we had write inside the container)
+                -> -t (show the thing that is return in prety)
+                -> sh (it will run the terminal inside the given container)
