@@ -56,9 +56,6 @@ NOTE: if we are using windows home os that we have to install virtual box and th
             -> if it didn't find the image in the cache then it get the image from the free service called docker hub and make a container for that
                 -> https://hub.docker.com/
 
-*) DockerFile:
-    -> A DockerFile is a blueprint for building a docker image
-
 *) Image:
     -> image software contain all of those essential data that is needed to create a container like dependencies
     -> or docker image is a template to run docker container
@@ -113,3 +110,61 @@ NOTE: if we are using windows home os that we have to install virtual box and th
                 -> -i (it will run the command which we had write inside the container)
                 -> -t (show the thing that is return in prety)
                 -> sh (it will run the terminal inside the given container)
+
+
+*) Custom Images Using DockerFile
+    *) DockerFile:
+        -> A DockerFile is a blueprint for building a docker image
+        -> Ex:
+            -> if we are making a website and have files in github:
+                -> index.php
+                -> in.html
+                -> base.html
+                -> utils
+            -> and we are trying to run the website by installing:
+                -> apache 2 (server)
+                    -> configure apache 
+                -> pull code from git
+                -> install other dependencies
+                -> restart the server
+            -> there is a chance that we will get an error because in those condition website devlopor did and in the condition that we are in right now in our pc that might will not match the requirement and will throw an error
+            -> to solve that problem we will create the DockerFile 
+            -> DockerFile container all the information that how to run the website in this example
+            -> So, Dockerfile contains all the info for running your software in a base container
+
+    *) DockerFile --> Image:
+        => DockerFile contain plain text
+        => DockerFile request the dockerClient to create the image of the file
+        => DockerClient request the DockerServer to create the image of the file
+        => DockerServer will create a usable image
+        => DockerFile --> DockerClient --> DockerServer --> UsableImage
+
+*) How To create A custom Image?
+    -> step 1: Choose a base image
+    -> step 2: Run commands for your software
+    -> step 3: Spacify the base command
+
+
+*) Creating our own custom image:
+    -> first we will create a 'Dockerfile' file in project directory
+    -> we will start from alpine (alpine is the light weight linux distro)
+    -> and write some dockerfile
+    -> docker build . (to build the created image)
+        -> we will get the container id
+        -> docker run <Container Id> (to run the custom container)
+
+
+*) Tagging Image:
+    -> docker build -t roman/redis:latest .
+        -> -t = we want to add a tag inside this image
+        -> roman = docker username
+        -> radis = image name
+        -> latest = varsion
+            -> docker run roman/radis
+
+    -> docker run -it alpine sh
+        -> apk add --update redis (we can run the command that we had created inside the shell)
+        -> docker commit -c 'CMD "redis-server"' <alpine image container id> (this says that, commit inside the container with startup command 'redis-server')
+            -> it means that what every is running in this container make a file system snapshot of that and then start the container with the given startup command
+            -> then we will get the container id:
+                -> docker run <Container ID>
