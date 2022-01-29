@@ -89,9 +89,19 @@ NOTE: if we are using windows home os that we have to install virtual box and th
             -> Image: image is the name of that image
             -> Command: startup command
 
-        -> docker image (show all the images)
+        -> docker images (show all the images)
 
         -> docker ps --all (show all the image that are running and had run already)
+
+        -> docker ps -a # Lists containers (and tells you which images they are spun from)
+
+        -> docker rm <container_id>  # Removes a stopped container
+
+        -> docker rm -f <container_id> # Forces the removal of a running container (uses SIGKILL)
+
+        -> docker rmi <image_id>  # Removes an image # Will fail if there is a running instance of that image i.e. container
+
+        -> docker rmi -f <image_id>    # Forces removal of image even if it is referenced in multiple repositories, # i.e. same image id given multiple names/tags, # Will still fail if there is a docker container referencing image
 
         -> docker stop <CONTAINER ID> (to stop running docker container by the process which is needed to stop the container)
         -> docker kill <CONTAINER ID> (if by commanding docker stop if container didn't responde and stop the container then we will kill or terminate that container)

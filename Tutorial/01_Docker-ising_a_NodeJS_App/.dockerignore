@@ -1,0 +1,2 @@
+node_modules
+# here we are spacifying we don't want to copy node_modules into container

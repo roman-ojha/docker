@@ -1,0 +1,27 @@
+# this file is use to create a container
+# The 'Dockerfile' is use to bootstrap the project
+# but this file is spacifyinghow we want to configure docker container
+
+version: "3"
+
+services:
+  api-dev:
+    # here we are spacifying the dev services we can name what ever we want, here we are spacifying 'api-dev' because it is dev service
+    build:
+      # here we are spacifying how to build the application
+      context: .
+      # so here we are spacify use this set of instruction for docker file
+      dockerfile: Dockerfile
+    ports:
+      # we have to spacify which port number we want to use
+      - "8080:8080"
+      # "<local_machine_port>:<container_app_inside_port>"
+    volumes:
+      # if we make a change to our code
+      - ./src:/app/src
+      # so here we are bind source folder with the container src folder. so, when change is made on local machine it will be reflected on the container as well
+      # <local_src_folder>:<container_src_folder>
+    command: npm run dev
+    # here we are spacifying the command that needs to run to run the application
+  # if we want to create other services then we can spacify here like local mongo or local redis services
+  # the reason that we want to do this is we want to spacify what's going to be inside the container what's going to connect together
