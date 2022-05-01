@@ -1,0 +1,3 @@
+*) For docker-compose file:
+    -> docker-compose -f <docker_compose_file_name> logs <command_name>
+            -> (to run docker-compose command for specific docker-comose file)
