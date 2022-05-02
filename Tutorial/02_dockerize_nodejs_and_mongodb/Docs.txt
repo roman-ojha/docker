@@ -27,3 +27,16 @@
 *) For more detail I use:
     -> https://github.com/trulymittal/Nodejs-REST-API
     -> https://youtu.be/vm3YfOHf_Cc
+
+
+*) Develop Application using docker:
+    -> npm i -D nodemon
+    -> on docker-compose.yml specify the 'volume:' for node services
+        -> volumes:
+            - .:/user/src/app
+    -> on DockerFile:
+        -> CMD ["npm","run","dev"]
+    -> docker compose build
+        -> we again have to rebuild the application, if we didn't build again then docker will run the previously build cached image
+    -> docker compose up
+        -> 

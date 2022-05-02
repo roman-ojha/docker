@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
 
 app.get("/items/get", (req, res) => {
   Item.find()
-    .then((items) => res.json(items))
+    .then((items) => res.json({ msg: "This is Message", items }))
     .catch((err) => res.status(404).json({ msg: "NO items found" }));
 });
 

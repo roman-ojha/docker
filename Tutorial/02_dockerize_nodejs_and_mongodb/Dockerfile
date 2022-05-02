@@ -21,5 +21,7 @@ COPY . .
 EXPOSE 3000
 # where application run's on
 
-CMD ["npm","start"]
+# CMD ["npm","start"]
 # run the application
+# OR to develop application on using docker container
+CMD ["npm","run","dev"]

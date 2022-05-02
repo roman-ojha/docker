@@ -11,13 +11,9 @@ services:
     build: .
     # to build an image we want to build it form Dockerfile
     ports:
-      - "80:3000"
-    # here we are running the application on '80' port
+      - "4000:3000"
+    # here we are running the application on '4000' port
     # "<port_on_local_machine>:<port_on_container>"
-    # links:
-    #   -mongo
-    # we have to link our 'app' services to our 'mongo' services
-    # NOTE: this 'links' method didnot work for me
     environment:
       # and now we need to provide some environment variables
       # so that we have provided on '.env' file we want to pass the exact same variable for container
@@ -30,6 +26,15 @@ services:
     depends_on:
       - mongo
     # so rather i will use depend on so that rather then first running application first mongodb will start it's server then only we will run the application
+    # links:
+    #   -mongo
+    # we have to link our 'app' services to our 'mongo' services
+    # NOTE: this 'links' method didnot work for me
+    volumes:
+      # what if we want to develop application using docker, then we want docker code get change when ever  make change in our source code
+      - .:/user/src/app
+      # to do that we have to map the current volume to the path where the application inside the container present
+      # <current_working_directory_of_local_machine>:<application_avilable_on_container>
 
   # docker-compose for mongodb Services
   mongo:
@@ -49,8 +54,10 @@ services:
       # - ./data:/data/db
       # or we can also provide the volume './data' as path but this is not advisible so instance we should create a volume that should be managed by docker it self
     ports:
-      - "27017:27017"
-        # mongodb run on 27017 port
+      # - "27017:27017"
+      - "2717:27017"
+        # mongodb run on 27017 port in container as well and also we are providing '2717' port to access container db on localhost
+        # <local_port>:<container_port>
 
 volumes:
   # Now here we will create the volumns for 'mongo'

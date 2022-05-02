@@ -1,0 +1,7 @@
+# For 3000 port
+### get all the items from mongodb compass
+GET http://localhost:3000/items/get
+
+# for Docker application port:
+### get all the items from docker db
+GET http://localhost:4000/items/get
