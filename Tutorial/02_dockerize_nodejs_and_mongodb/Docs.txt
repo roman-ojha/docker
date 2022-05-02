@@ -10,3 +10,12 @@
     => we can manually create container for mongodb but we also want to easily port to another system and docker-compose allows us to do that
     => Command:
         -> docker compose up (to run docker-compose.yml)
+        -> docker compose down (to remove container, network)
+
+*) Deploy application to DigitalOcean with docker:
+    -> https://youtu.be/hP77Rua1E0c?t=1011
+
+
+*) For more detail I use:
+    -> https://github.com/trulymittal/Nodejs-REST-API
+    -> https://youtu.be/vm3YfOHf_Cc
