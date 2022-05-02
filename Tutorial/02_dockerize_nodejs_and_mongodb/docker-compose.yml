@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  app:
+    container_name: docker-node-mongo
+    image: docker-node-mongo
+    restart: always
+    # restart always will alway restart if it will fail
+    build: .
+    # to build an image we want to build it form docker file
+    ports:
+      - "80:3000"
+    # here we are running the application on '80' port
+    # links:
+    #   -mongo
+    # we have to link our 'app' services to our 'mongo' services
+    # NOTE: this 'links' method didnot work for me
+    depends_on:
+      - mongo
+    # so rather i will use depend on so that rather then first running application first mongodb will start it's server then only we will run the application
+
+  # docker-compose for mongodb
+  mongo:
+    container_name: mongo
+    image: mongo
+    # we want to define image because we are not building docker file for this particular services like we did in in 'app' services
+    # so here we will pull 'mongo' image from the docker hub
+    ports:
+      - "27017:27017"
+        # mongodb run on 27017 port
