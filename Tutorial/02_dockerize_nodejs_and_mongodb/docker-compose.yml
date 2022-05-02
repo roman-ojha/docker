@@ -1,30 +1,59 @@
-version: "3"
+# version: "3"
+version: "3.9"
 
 services:
+  # services that we want to start
   app:
     container_name: docker-node-mongo
     image: docker-node-mongo
     restart: always
     # restart always will alway restart if it will fail
     build: .
-    # to build an image we want to build it form docker file
+    # to build an image we want to build it form Dockerfile
     ports:
       - "80:3000"
     # here we are running the application on '80' port
+    # "<port_on_local_machine>:<port_on_container>"
     # links:
     #   -mongo
     # we have to link our 'app' services to our 'mongo' services
     # NOTE: this 'links' method didnot work for me
+    environment:
+      # and now we need to provide some environment variables
+      # so that we have provided on '.env' file we want to pass the exact same variable for container
+      PORT: 3000
+      DB_NAME: docker-node-mongo
+      MONGODB_URI: mongodb://mongo:27017
+      # now here we can see that we are providing mongodb container servide name 'mongo' rather then localhost
+      # and port '27017' is the port where mongodb run on container as well
+      # When container start, docker compose create a network to which all containers join and thus all containers can communicate
     depends_on:
       - mongo
     # so rather i will use depend on so that rather then first running application first mongodb will start it's server then only we will run the application
 
-  # docker-compose for mongodb
+  # docker-compose for mongodb Services
   mongo:
     container_name: mongo
-    image: mongo
+    # image: mongo
+    image: mongo:latest
     # we want to define image because we are not building docker file for this particular services like we did in in 'app' services
     # so here we will pull 'mongo' image from the docker hub
+    # and we want to use the latest version of mongo
+    restart: always
+    # if this container fails for some reason then restart it always
+    volumes:
+      # if you restart the container and you hadnot provided the volume then whenever the container will stop all the data that is present inside that container would be removed and data would now be presistent
+      - mongo:/data/db
+      # so here 'mongo' volume would be mapped to '/data/db' because by default mongodb always store all of it's database file inside '/data/db'
+
+      # - ./data:/data/db
+      # or we can also provide the volume './data' as path but this is not advisible so instance we should create a volume that should be managed by docker it self
     ports:
       - "27017:27017"
         # mongodb run on 27017 port
+
+volumes:
+  # Now here we will create the volumns for 'mongo'
+  mongo: {}
+  # we need to create the volume by 'mongo' name because that is what we provided previously
+  # and provide the object

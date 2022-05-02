@@ -1,1 +1,1 @@
-GET http://localhsot:3000/item
+GET http://localhost:3000/items/get

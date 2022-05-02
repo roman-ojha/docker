@@ -1,7 +1,7 @@
-const express = require("express");
-const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
+const express = require("express");
+const mongoose = require("mongoose");
 const PORT = process.env.PORT;
 const MongoDB_URI = process.env.MONGODB_URI;
 const DB = process.env.DB_NAME;
@@ -18,6 +18,7 @@ mongoose
     // to connect to mongoDB we will not use localhost rather we will sue 'mongo' because 'mongo' will going to be the name of our service that's going to be our mongo container
     // so 'mongo' name should be similar as services name
     // NOTE: while running locally on machine without docker container the 'mongo' is not working right now so it looks like we have to put 'localhost for that reason'
+
     MongoDB_URI,
     { dbName: DB, useNewUrlParser: true }
   )
@@ -48,4 +49,4 @@ app.post("/item/add", (req, res) => {
   newItem.save().then((item) => res.redirect("/"));
 });
 
-app.listen(PORT, () => console.log("Server running..."));
+app.listen(PORT, () => console.log(`Server Running on ${PORT}`));

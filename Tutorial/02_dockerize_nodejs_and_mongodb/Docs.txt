@@ -3,10 +3,18 @@
     -> We want to use docker-compose file so that Mongodb will run on separate container and want them to talk to each other
     -> Initialize you project from 
         -> https://github.com/bradtraversy/docker-node-mongo/tree/master
+    *) To run NodeJS and Mongodb We need to container:
+        1) Nodejs API container
+        2) MongoDB container
+    -> https://hub.docker.com/_/node
+    -> https://hub.docker.com/_/mongo
 
 *) Steps
     => DockerFile for NodeJS
         -> Now we will create the 'Dockerfile' for NodeJS application
+        -> this will allow to create container for nodejs application
+    => docker-compose:
+        -> which will start all the necessary necessary container to run this application 
     => we can manually create container for mongodb but we also want to easily port to another system and docker-compose allows us to do that
     => Command:
         -> docker compose up (to run docker-compose.yml)
