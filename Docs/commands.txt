@@ -1,4 +1,11 @@
 => docker --version (to see locally available docker version)
+=> docker ps (to see running container)
+=> docker ps -a (to see all created container)
+=> docker images (to see all images available)
+=> docker rm <container_id> (to remove container)
+=> docker rm -f <container_id> (force remove container)
+=> docker rmi <image_id> (to remove image)
+=> docker rmi -f <image_id> (force remove image)
 
 *) For Dockerfile
         -> docker build . (build container from 'Dockerfile')
