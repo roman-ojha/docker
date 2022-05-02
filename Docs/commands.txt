@@ -1,10 +1,17 @@
+=> docker --version (to see locally available docker version)
+
+*) For Dockerfile
+        -> docker build . (build container from 'Dockerfile')
+
 *) For docker-compose file:
-    => docker-compose up
-            -> (to execute docker-compose.yml file)
-    => docker-compose up -d
-            -> -d : detached
-            -> (execute docker-compose.yml and run in background)
-    => docker-compose down
-            -> (to remove container and network)
-    => docker-compose -f <docker_compose_file_name> logs <services_name>
-            -> (to run docker-compose command for specific docker-comose file)
+        => docker-compose up  (docker-compose is deprecated)
+        => docker compose up
+                -> (to execute docker-compose.yml file)
+        => docker-compose up -d
+                -> -d : detached
+                -> (execute docker-compose.yml and run in background)
+        => docker-compose down
+        => docker compose down
+                -> (to remove container and network)
+        => docker-compose -f <docker_compose_file_name> logs <services_name>
+                -> (to run docker-compose command for specific docker-comose file)
