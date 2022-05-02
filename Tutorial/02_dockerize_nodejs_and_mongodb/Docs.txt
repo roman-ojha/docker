@@ -1,0 +1,5 @@
+*) Overview:
+    -> We will create dockerfile
+    -> We want to use docker-compose file so that Mongodb will run on separate container and want them to talk to each other
+    -> Initialize you project from 
+        -> https://github.com/bradtraversy/docker-node-mongo/tree/master
