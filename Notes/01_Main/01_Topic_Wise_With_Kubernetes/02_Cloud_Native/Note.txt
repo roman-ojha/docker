@@ -1,0 +1,2 @@
+*) Cloud Native Foundation: https://www.cncf.io/
+*) Landscape: https://landscape.cncf.io/
