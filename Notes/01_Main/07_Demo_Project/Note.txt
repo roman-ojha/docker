@@ -10,3 +10,9 @@
     -> we will use JS & Nodejs application
     -> MongoDB Docker container to connect with database
     -> './02_Project_Overview.png'
+    -> we will use mongodb DB image: https://hub.docker.com/_/mongo
+    -> also we will use mongo-express image to interact with mongodb DB: https://hub.docker.com/_/mongo-express
+
+    -> docker pull mongo
+    -> docker pull mongo-express
+    -> docker network create mongo-network

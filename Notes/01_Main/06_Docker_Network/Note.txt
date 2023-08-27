@@ -1,0 +1,20 @@
+*) Docker Network:
+    -> https://docs.docker.com/engine/reference/commandline/network/
+    -> Docker create it's Isolated Docker Network where the containers are running in.
+    -> './01_Docker_Network_Example.png'
+        -> When we deploy two container in the same docker network example: 'mongo', 'mongo-express', they can talk to each other with just the container name without localhost:<port> etc.., because they are in the same network
+        -> and the application that runs outside of docker like on '../07_Demo_Project' NodeJS application which runs from node server is going to connect to them from outside of the host using localhost and port number.
+    -> './02_Docker_Network_Example.png' 
+        -> So, letter when we package our application into it's own docker image then we will have is docker network with 'mongo' & 'mongo-express' container and we will going to have a NodeJS application which we wrote and create and it will have it's own docker container and will going to connect with the 'mongo'
+        -> And the browser that is running on the host but outside of the Docker Network will gong to connect using the localhost and port number
+
+    -> docker network ls (get the list of networks)
+        NETWORK ID     NAME      DRIVER    SCOPE
+        7900ada7c8af   bridge    bridge    local
+        4fb0c5091edc   host      host      local
+        181f662a6eab   none      null      local
+
+    -> docker network create <network_name> (create our own network)
+        -> EX: docker network create mongo-network
+
+    *> To Run container inside of their own network we have to provide network option when we run the container using docker run command:
