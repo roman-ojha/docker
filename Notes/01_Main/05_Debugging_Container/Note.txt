@@ -1,0 +1,9 @@
+*) Debugging Container:
+    -> docker logs <container_id> (to see all the logs that container is producing)
+    -> docker logs <container_name> (to see all the logs of container by providing the container name that every container have unique name which you can use using 'docker ps')
+    -> docker exec -it <container_id|name> /bin/bash (get terminal of the running container)
+        -> -it: interactive terminal
+        -> exit (exit terminal)
+
+    -> docker exec -i -t <Container ID> sh (to go inside the shell of that container and run can other command as well)
+            -> sh (it will run the shell terminal inside the given container)

@@ -18,6 +18,13 @@
     -> docker stop <CONTAINER_ID> (to stop the running container)
     -> docker start <CONTAINER_ID> (to start the stopped container with given container id)
     -> docker ps (to list out all the running container)
+            CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS      NAMES
+            385e01c54dff   redis:6.2.13   "docker-entrypoint.s…"   2 seconds ago    Up 1 second     6379/tcp   affectionate_antonelli
+            ab42ee608f07   redis          "docker-entrypoint.s…"   16 minutes ago   Up 10 minutes   6379/tcp   naughty_wilbur
+            9e21e074dc3c   postgres       "docker-entrypoint.s…"   2 hours ago      Up 2 hours      5432/tcp   some-postgres
+            -> Container id: container id will uniquilly identify the container
+            -> Image: image is the name of that image
+            -> Command: startup command
     -> docker ps -a (to get all the container which are running or which are not running)
     -> docker ps --all (to get all the container which are running or which are not running)
     
@@ -58,3 +65,35 @@
                 b03d7213e7d0   redis          "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:6000->6379/tcp   vigorous_turing
                 9e21e074dc3c   postgres       "docker-entrypoint.s…"   2 hours ago          Up 2 hours          5432/tcp                 some-postgres
                 -> here we can see that redis with different version are running on the same port inside the container but are binding on different port on host machine
+                
+    *) Set name of the container:
+        -> docker ps
+            CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS      NAMES
+            385e01c54dff   redis:6.2.13   "docker-entrypoint.s…"   2 seconds ago    Up 1 second     6379/tcp   affectionate_antonelli
+            ab42ee608f07   redis          "docker-entrypoint.s…"   16 minutes ago   Up 10 minutes   6379/tcp   naughty_wilbur
+            9e21e074dc3c   postgres       "docker-entrypoint.s…"   2 hours ago      Up 2 hours      5432/tcp   some-postgres
+            -> here we can see that every container are assigned with the random unique name on it
+        
+        -> docker run --name <name_of_the_container> (specify name of the container that you want to run)
+            EX:
+                -> docker run -d -p6001:6379 --name redis-older redis:6.2.13
+                -> docker run -d -p6000:6379 --name redis-new redis
+                    -> -d: detach
+                    -> -p: port
+                -> docker ps
+                CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                    NAMES
+                457ae2668f57   redis          "docker-entrypoint.s…"   3 seconds ago    Up 2 seconds    0.0.0.0:6000->6379/tcp   redis-new
+                bed8c1d97488   redis:6.2.13   "docker-entrypoint.s…"   23 seconds ago   Up 22 seconds   0.0.0.0:6001->6379/tcp   redis-older
+                9e21e074dc3c   postgres       "docker-entrypoint.s…"   2 hours ago      Up 2 hours      5432/tcp                 some-postgres
+                
+    
+    -> now we can 'start', 'stop' container with the specific container name
+    
+    -> docker stop <container_name>
+        ->EX: docker stop redis-older
+
+*) Docker run vs Docker start:
+    -> Docker run:
+        -> create new container from the image
+    -> Docker start:
+        -> Start the existing docker container which is not running right now

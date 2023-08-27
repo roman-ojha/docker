@@ -50,11 +50,6 @@ NOTE: if we are using windows home os that we have to install virtual box and th
             -> it will run the shell and come out of that shell
 
 *) Command
-        -> docker ps (show all the images that are running)
-            -> Container id: container id will uniquilly identify the container
-            -> Image: image is the name of that image
-            -> Command: startup command
-
         -> docker rm <container_id>  # Removes a stopped container
 
         -> docker rm -f <container_id> # Forces the removal of a running container (uses SIGKILL)
@@ -70,13 +65,6 @@ NOTE: if we are using windows home os that we have to install virtual box and th
         -> docker start -a 4e62437a1204a3caaf4a66835b6e52c45f06aa86eb5c6374165753f91d42dff8 (this will start the container)
             -> -a(attached) display the output that contain inside the container
 
-        -> docker run redis (to run docker image):
-            -> docker logs <redis Container ID> (it will show that contain inside the container)
-
-        -> docker exec -i -t <Container ID> sh (to go inside the shell of that container and run can run other command as well)
-                -> -i (it will run the command which we had write inside the container)
-                -> -t (show the thing that is return in prety)
-                -> sh (it will run the terminal inside the given container)
 
 
 *) Custom Images Using DockerFile

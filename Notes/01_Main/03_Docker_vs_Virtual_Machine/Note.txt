@@ -9,6 +9,7 @@
             
 *) Docker vs Virtual machine:
     -> Both are virtualization tools
+    -> Both have their own file system
     *) Docker
         -> Docker Virtualize the application Layer.
         -> So when we download the docker image it contains the applications layer of the OS and some application on top of it and uses and uses the Kernel of the Host(OS here Docker is running)
@@ -18,6 +19,7 @@
             -> So, previous when we try to install docker on our OS we use to check wether your host can run docker natively which mean is kernel is compatible with docker images.
             -> To solve this problem we install Docker toolbox which abstract away to kernel to make it possible for you host to run different docker images
             -> Now docker runs natively starting from windows 10, we don't need to install Docker toolbox
+        -> NOTE that docker is the lightweight version of linux which have the same bash command but it would not have some command available inside the docker container of linux
     *) Virtual Machine
         -> Virtual machine on the other hand have application layer and OS Kernel.
         -> So it's virtualize the complete Operating system.
