@@ -1,0 +1,26 @@
+*) Operating System:
+    ->  2 Layer:
+        -> './01_OS_Layer.png'
+        1. OS Kernel Layer
+            -> Communicate with the hardware like CPU, Memory
+        2. Application Layer
+            -> Runs on Kernel Layer
+            -> EX: In linux ecosystem all the linux distro run on same Kernel but on different application Layer
+            
+*) Docker vs Virtual machine:
+    -> Both are virtualization tools
+    *) Docker
+        -> Docker Virtualize the application Layer.
+        -> So when we download the docker image it contains the applications layer of the OS and some application on top of it and uses and uses the Kernel of the Host(OS here Docker is running)
+        -> Size of docker image are smaller because that just have to implement application layer, size will be on MB
+        -> Docker container start and run much faster
+        -> EX: './03_Docker_on_Windows_Host.png' Let's say that you have windows base OS Host with kernel and it's application, and you want to run linux based docker image on that windows host, the problem here is that the linux based docker image might not be compatible with the windows kernel and this is true for the windows bellow version 10 and older mac version.
+            -> So, previous when we try to install docker on our OS we use to check wether your host can run docker natively which mean is kernel is compatible with docker images.
+            -> To solve this problem we install Docker toolbox which abstract away to kernel to make it possible for you host to run different docker images
+    *) Virtual Machine
+        -> Virtual machine on the other hand have application layer and OS Kernel.
+        -> So it's virtualize the complete Operating system.
+        -> So when we download VM on our Host it doesn't uses Host Kernel rather it boots up it's own kernel
+        -> VM size will be on GB
+        -> VM are much slower then Docker because they have to boot up kernel and run application on top of it.
+        -> You can run VM of any OS on any other OS Host.
