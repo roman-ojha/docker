@@ -6,7 +6,7 @@ const PORT = 8080;
 const app = express();
 
 app.get("/", (req, res) => {
-  return res.sendFile(path.join(__dirname, "view/index.html"));
+  return res.sendFile(path.join(__dirname, "/views/index.html"));
 });
 
 app.get("/profile-picture", (req, res) => {
