@@ -1,0 +1,12 @@
+*) Workflow with Docker:
+    -> Steps on development:
+        1. Development
+        2. Continuous integration/Delivery
+        3. Deployment
+    -> './01_Workflow_with_Docker.png'
+    -> https://youtu.be/3c-iBn73dDE?t=4041
+
+*) Project Overview:
+    -> we will use JS & Nodejs application
+    -> MongoDB Docker container to connect with database
+    -> './02_Project_Overview.png'
