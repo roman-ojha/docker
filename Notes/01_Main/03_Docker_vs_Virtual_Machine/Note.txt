@@ -17,6 +17,7 @@
         -> EX: './03_Docker_on_Windows_Host.png' Let's say that you have windows base OS Host with kernel and it's application, and you want to run linux based docker image on that windows host, the problem here is that the linux based docker image might not be compatible with the windows kernel and this is true for the windows bellow version 10 and older mac version.
             -> So, previous when we try to install docker on our OS we use to check wether your host can run docker natively which mean is kernel is compatible with docker images.
             -> To solve this problem we install Docker toolbox which abstract away to kernel to make it possible for you host to run different docker images
+            -> Now docker runs natively starting from windows 10, we don't need to install Docker toolbox
     *) Virtual Machine
         -> Virtual machine on the other hand have application layer and OS Kernel.
         -> So it's virtualize the complete Operating system.

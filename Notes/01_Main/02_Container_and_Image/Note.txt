@@ -22,7 +22,7 @@
     *) Where do container live?
         -> Container lives in a container repositories
         -> Many company have their own private repositories where they host and store containers.
-        -> There is also a public repository for public Docker containers called "DockerHub"
+        -> There is also a public repository for public Docker containers called "DockerHub" actually DockerHub container Images of the container in more detail.
         -> https://hub.docker.com/
 
     *) Development Before containers:

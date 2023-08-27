@@ -1,0 +1,60 @@
+*) Command:
+    -> docker pull <image_name> (download latest version of image from docker hub)
+    -> docker pull <image_name>:<version> (download given version of iamge from docker hub)
+    -> docker images (to check all the existing images locally)
+        REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+        redis        latest    506734eb5e71   10 days ago   138MB
+        postgres     14.9      5fb1753eb50a   11 days ago   409MB
+        postgres     latest    43677b39c446   11 days ago   412MB
+        -> Here we can see that every image contain it's Image ID and Tags(version) of that image
+        -> Here we just have download the image we have to still started the container or that image is still not running
+    -> docker run <image_name> (to run the given image if exist locally if not then pull from docker hub and then run it) EX: [docker pull + docker start] || [docker create + docker start]
+        -> EX: docker run redis
+            -> this will start a redis container in a terminal
+    -> docker run <image_name>:<version> (to run the given image with specific version if exist locally if not then pull from docker hub and then run it)
+    -> docker run -d <image_name> (to run the image in detach mode)
+        -> EX: docker run -d redis
+            -> it means that it will run the container on the background and still be able to get the same terminal
+    -> docker stop <CONTAINER_ID> (to stop the running container)
+    -> docker start <CONTAINER_ID> (to start the stopped container with given container id)
+    -> docker ps (to list out all the running container)
+    -> docker ps -a (to get all the container which are running or which are not running)
+    -> docker ps --all (to get all the container which are running or which are not running)
+    
+    *) Use Docker container:
+        -> docker ps
+            ❯ docker ps
+            CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS      NAMES
+            385e01c54dff   redis:6.2.13   "docker-entrypoint.s…"   2 seconds ago    Up 1 second     6379/tcp   affectionate_antonelli
+            ab42ee608f07   redis          "docker-entrypoint.s…"   16 minutes ago   Up 10 minutes   6379/tcp   naughty_wilbur
+            9e21e074dc3c   postgres       "docker-entrypoint.s…"   2 hours ago      Up 2 hours      5432/tcp   some-postgres
+            -> here we can see that these docker container are running on some PORTS this specify that this that in this port the container is listening to the incoming request
+            -> also here we can see that image 'redis' & 'redis:6.2.13' are running on the same port
+            
+            *) Docker Port vs Host Port:
+                -> All the container have their their own Port & Host also have their port available
+                -> Multiple container can run on you host machine, and your Host have some Port available for certain application
+                -> So we need to create some binding between a port with the Host machine and the container
+                -> EX: './02_Container_Port_vs_HOST_Port.png' image we can see that in first container we can see that the Container is listening on port 5000 and we have bind Host port 5000 to that Container .
+                -> So, it means that There will be a conflict when we try to run application of same port on the same Host machine.
+                -> But, './03_Container_Port_vs_HOST_Port.png' image we can see that bot the second and third container are listening on port 3000 but are bind on different host port.
+                -> So you would have container running on port 3000 but Host is bind to port 3001 in that case to access that container application we have to use port 3001 from host machine like: 'localhost:3001'
+                
+            
+            CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS      NAMES
+            385e01c54dff   redis:6.2.13   "docker-entrypoint.s…"   2 seconds ago    Up 1 second     6379/tcp   affectionate_antonelli
+            ab42ee608f07   redis          "docker-entrypoint.s…"   16 minutes ago   Up 10 minutes   6379/tcp   naughty_wilbur
+            9e21e074dc3c   postgres       "docker-entrypoint.s…"   2 hours ago      Up 2 hours      5432/tcp   some-postgres
+            -> So here we can see that all these container are listening on some port but because these container are not bounded with Host port we can't be able to access these container from the host machine.
+            -> So, to access the container we have to bind the port on run command
+            
+        -> docker run -p<host_port>:<container_port> <image_name> (to run the container with binding port from host to container port)
+            -> EX: 
+                -> docker run -p6000:6379 -d redis
+                -> docker run -p6001:6379 -d redis:6.2.13
+                -> docker ps
+                CONTAINER ID   IMAGE          COMMAND                  CREATED              STATUS              PORTS                    NAMES
+                4ec8a121d330   redis:6.2.13   "docker-entrypoint.s…"   2 seconds ago        Up 1 second         0.0.0.0:6001->6379/tcp   xenodochial_mclaren
+                b03d7213e7d0   redis          "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:6000->6379/tcp   vigorous_turing
+                9e21e074dc3c   postgres       "docker-entrypoint.s…"   2 hours ago          Up 2 hours          5432/tcp                 some-postgres
+                -> here we can see that redis with different version are running on the same port inside the container but are binding on different port on host machine
