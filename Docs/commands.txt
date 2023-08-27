@@ -4,6 +4,8 @@
 -> docker images (to check all the existing images locally)
 -> docker run <image_name> (to run the given image if exist locally if not then pull from docker hub and then run it) EX: [docker pull + docker start] || [docker create + docker start]
 -> docker run <image_name>:<version> (to run the given image with specific version if exist locally if not then pull from docker hub and then run it)
+-> docker run -e <key>=<value> <container_name|id> (set the environment variable while running the container)
+-> docker run --net <network_name> <container_name|id> (set the container network while running the container)
 -> docker stop <CONTAINER_ID|Container_name> (to stop the running container)
 -> docker start <CONTAINER_ID|Container_name> (to start the stopped container)
 -> docker ps (to list out all the running container)
@@ -14,6 +16,8 @@
 -> docker logs <container_id> (to see all the logs that container is producing)
 -> docker logs <container_name> (to see all the logs of container by providing the container name that every container have unique name which you can use using 'docker ps')
 -> docker exec -it <container_id|name> /bin/bash (get terminal of the running container)
+-> docker logs <container_name> | tail (get last part of the logs)
+-> docker logs <container_name> -f (stream the logs in live)
 => docker rm <container_id> (to remove container)
 => docker rm -f <container_id> (force remove container)
 => docker rmi <image_id> (to remove image)

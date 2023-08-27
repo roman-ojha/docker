@@ -6,7 +6,7 @@
     -> './01_Workflow_with_Docker.png'
     -> https://youtu.be/3c-iBn73dDE?t=4041
 
-*) Project Overview:
+*) Project Overview & Setup:
     -> we will use JS & Nodejs application
     -> MongoDB Docker container to connect with database
     -> './02_Project_Overview.png'
@@ -16,3 +16,34 @@
     -> docker pull mongo
     -> docker pull mongo-express
     -> docker network create mongo-network
+
+    *) Run mongo with some ENV on startup provided in documentation:
+        -> docker run -p 27018:27017 -d -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password --name mongodb --net mongo-network mongo
+        *> Multiline:
+            ❯ docker run -d \
+            > -p 27018:27018 \
+            > -e MONGO_INITDB_ROOT_USERNAME=admin \
+            > -e MONGO_INITDB_ROOT_PASSWORD=password \
+            > --name mongodb \
+            > --net mongo-network \
+            > mongo
+    -> docker logs mongodb
+
+    *) Run Mongo Express:
+        *> Info
+            -> https://hub.docker.com/_/mongo-express
+            -> on run the application we need to pass 'ME_CONFIG_MONGODB_ADMINUSERNAME' & 'ME_CONFIG_MONGODB_ADMINPASSWORD' because these are the value that we overrode
+            -> If we would have changed the host port of 'mongo' image container then we would have to provide 'ME_CONFIG_MONGODB_PORT' as well, but because we are run container on the same Docker network I can use internal container port to connect to 'mongo-express' which is '27017'
+            -> In this case we are serving mongodb on '27018' port because my Host machine mongodb is serving on '27017' port, so on the Nodejs I have to use '27018' port to connect to mongodb because nodejs is running outside of the Docker network and is not containerized
+            -> 'ME_CONFIG_MONGODB_SERVER' This is the container name that express will use to connect to docker, because they are running on the same Docker Network, this configuration value will going to work If we will not going to specify the Network on mongo Express then it would not work
+            
+        -> docker run -d -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password --net mongo-network --name mongo-express -e ME_CONFIG_MONGODB_SERVER=mongodb mongo-express
+        -> docker logs mongo-express
+
+    -> Now we can see mongo-express application on 'http://localhost:8081/'
+
+    *) Connect NodeJS with MongoDB database
+        -> using mongodb URI we can connect to mongodb using nodejs which is right now running outside of the mongodb network, So it means that we have not containerized the nodejs application
+        -> mongodb://admin:password@localhost:27018
+        -> mongodb://<username_that_we_set>:<password_that_we_set>@localhost:<port_that_host_can_bind>
+

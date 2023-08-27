@@ -7,3 +7,7 @@
 
     -> docker exec -i -t <Container ID> sh (to go inside the shell of that container and run can other command as well)
             -> sh (it will run the shell terminal inside the given container)
+    
+    -> docker logs <container_name> | tail (get last part of the logs)
+    
+    -> docker logs <container_name> -f (stream the logs in live)
