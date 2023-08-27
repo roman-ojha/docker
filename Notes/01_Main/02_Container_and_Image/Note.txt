@@ -1,0 +1,44 @@
+*) Image:
+    -> image software contain all of those essential data that is needed to create a container like dependencies
+    -> and docker image is a template to run docker container
+    -> image contain:
+        -> file system(fs) snapshot
+            -> ex: we have a chrome browser which container bin, lib folder and files
+        -> startup command
+            -> ex: let's say chrome.exe is the startup command so, when we will request docker server to convert image into container then it will get all those file system snapshot and put in certain segment of harddisk in pc
+
+*) What is Container:
+    -> './01_Container.png'
+    -> Docker Container is the running process
+    -> Docker Container contain software, resources
+    -> Which runs into our computer and consume memory and cpu processing
+    -> in Image example that we use for chrome container get the allocated isolated space in the harddisk and to run the chrome it will run the startup command and process it according to it's resources that are avilable inside the container
+    -> A Way to package application with all the necessary dependencies and configuration
+    -> and that package is Portable artifact, easily shared and moved around with development team and operational team.
+    *) Where do container live?
+        -> Container lives in a container repositories
+        -> Many company have their own private repositories where they host and store containers.
+        -> There is also a public repository for public Docker containers called "DockerHub"
+        -> https://hub.docker.com/
+
+    *) Development Before containers:
+        -> './03_Before_Containers.png'
+        -> Usually when you have team of developers you have to install most of the services on you operating system directly
+        -> you need postgreSQL, Redis application then all the developer have to go and install all of these application manually one by one and then have to install the same version where the development dependencies supported and also
+        -> And also every developer might working on different operating system, Installation process different on each OS environment, Many steps where something could go wrong.
+        -> This approach could be time consuming.
+        *) Deployment process:
+            -> './05_Deployment_Before_Container.png'
+    
+    *) How container solve this problem?
+        -> With container you don't have to install any of the  services directly on your operating system.
+        -> Because Container is itself own isolated OS layer where you have packaged everything in one isolated environment.
+        -> it will package will all the needed configuration inside one container.
+        -> It help to use one command to install the whole application.
+        -> Regardless of any OS you use the command would be same and it will create the required environment for you OS.
+        *) Deployment process:
+            -> './06_Deployment_After_Container.png'
+            
+
+    -> So docker is of Layer of stack Image in top of each other.
+    -> Mostly Linux Base Image, because small in size like 'alpine'.

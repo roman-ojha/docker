@@ -27,25 +27,6 @@ NOTE: if we are using windows home os that we have to install virtual box and th
 
 -> docker run hello-world
 
-#) Why Should we use Docker?
-    step 01: Get require software
-                * Find out the right software
-                * Download the install & run it
-    step 02: Get Error
-                * Cannot install on this machine or maybe
-                * Installer require Python 3.6 (error could be any thing)
-    step 03: Trobleshoot issue
-                * Re run installer
-                * Get another error
-
-    -> so in case of using docker it will containerize the software and after that we can run this application in any OS
-
-#) What is Docker?
-    -> When we say Docker we are not talking about one peace of software or machine
-    -> When we say Docker we are talking about entire ecosystem of Docker Products.
-    -> It include Docker client, Docker server, Docker maching, Docker hub, Docker compose etc.
-
-
 #) Docker Client and Docker Server
     -> Docker client is a tool we issue commands to for reaching out to docker daemon(docker server)
     -> The Docker doemon is a service that runs on your host operating system. it is responsible for running containers
@@ -55,21 +36,6 @@ NOTE: if we are using windows home os that we have to install virtual box and th
             -> Docker client and server will receive the request and check does 'hello-world' image avilable in the pc if it is avilable it means that, that image had been stored as the cache into the pc and it will get that image and install it from the cache
             -> if it didn't find the image in the cache then it get the image from the free service called docker hub and make a container for that
                 -> https://hub.docker.com/
-
-*) Image:
-    -> image software contain all of those essential data that is needed to create a container like dependencies
-    -> or docker image is a template to run docker container
-    -> image contain:
-        -> file system(fs) snapshot
-            -> ex: we have a chrome browser which container bin, lib folder and files
-        -> startup command
-            -> ex: let's say chrome.exe is the startup command so, when we will request docker server to convert image into container then it will get all those file system snapshot and put in certain segment of harddisk in pc
-
-*) Container:
-    -> Docker Container is the running process
-    -> Docker Container contain software, resources
-    -> Which runs into our computer and consume memory and cpu processing
-    -> in Image example that we use for chrome container get the allocated isolated space in the harddisk and to run the chrome it will run the startup command and process it according to it's resources that are avilable inside the container
 
 -> docker run busybox
     -> it will install the image

@@ -1,0 +1,17 @@
+#) Why Should we use Docker?
+    step 01: Get require software
+                * Find out the right software
+                * Download the install & run it
+    step 02: Get Error
+                * Cannot install on this machine or maybe
+                * Installer require Python 3.6 (error could be any thing)
+    step 03: Trobleshoot issue
+                * Re run installer
+                * Get another error
+
+    -> so in case of using docker it will containerize the software and after that we can run this application in any OS
+
+#) What is Docker?
+    -> When we say Docker we are not talking about one peace of software or machine
+    -> When we say Docker we are talking about entire ecosystem of Docker Products.
+    -> It include Docker client, Docker server, Docker maching, Docker hub, Docker compose etc.
