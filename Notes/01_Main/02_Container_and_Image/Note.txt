@@ -1,6 +1,8 @@
 *) Image:
     -> image software contain all of those essential data that is needed to create a container like dependencies
-    -> and docker image is a template to run docker container
+    -> docker image is a template to run docker container
+    -> It is an actual package together with the configuration and dependencies etc...
+    -> It is an artifact, that can be moved around.
     -> image contain:
         -> file system(fs) snapshot
             -> ex: we have a chrome browser which container bin, lib folder and files
@@ -12,6 +14,8 @@
     -> Docker Container is the running process
     -> Docker Container contain software, resources
     -> Which runs into our computer and consume memory and cpu processing
+    -> Container is actually where We use Image to start the application or process.
+    -> './08_Image_and_Container.png'
     -> in Image example that we use for chrome container get the allocated isolated space in the harddisk and to run the chrome it will run the startup command and process it according to it's resources that are avilable inside the container
     -> A Way to package application with all the necessary dependencies and configuration
     -> and that package is Portable artifact, easily shared and moved around with development team and operational team.
@@ -42,3 +46,18 @@
 
     -> So docker is of Layer of stack Image in top of each other.
     -> Mostly Linux Base Image, because small in size like 'alpine'.
+    
+
+*) Demo example:
+    -> let's download 'postgres': https://hub.docker.com/_/postgres
+    -> docker run postgres:9.6
+    *) Docker Image Layer:
+        -> './07_Docker_Container.png'
+        -> './09_Layers.png'
+        -> https://youtu.be/3c-iBn73dDE?t=835
+        
+    -> docker pull postgres
+    -> docker run --name some-postgres -e POSTGRES_PASSWORD=helloworld -d postgres
+    -> docker ps
+        CONTAINER ID   IMAGE      COMMAND                  CREATED          STATUS          PORTS      NAMES
+        9e21e074dc3c   postgres   "docker-entrypoint.s…"   13 seconds ago   Up 12 seconds   5432/tcp   some-postgres
