@@ -1,0 +1,16 @@
+*) Docker Compose:
+    -> https://docs.docker.com/get-started/08_using_compose/
+    -> On the previous Demo project we run these multiple command to make our application running:
+        -> docker pull mongo
+        -> docker pull mongo-express
+        -> docker network create mongo-network
+        -> docker run -p 27018:27017 -d -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password --name mongodb --net mongo-network mongo
+        -> docker run -d -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password --net mongo-network --name mongo-express -e ME_CONFIG_MONGODB_SERVER=mongodb mongo-express
+        
+    -> This way of Deploying application is time consuming. we should not run this command all the time on command line.
+    -> To run the multiple docker container we have Docker Compose.
+    -> For that we can take the whole command with it's configuration and map it into a YAML file so now we will have a structured command.
+    -> Let's say you have 10 docker container that need to run to complete the application you can write all their run command in a docker Compose file.
+    -> we have defined docker compose for 'mongo', 'mongo-express' application on './docker-compose.yaml' file.
+    -> NOTE that by default docker compose will take care of creating a common Network for the docker compose services.
+    -> But if you want to specify it then you can do that using 'networks' attribute in './docker-compose.yaml'

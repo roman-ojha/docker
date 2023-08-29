@@ -1,0 +1,21 @@
+version: "3.9" # Defines the Docker Compose version being used
+services: # Defines the services to be created
+  mongo: # This is the name of the MongoDB service
+    image: mongo # Specifies the Docker image to be used for the service
+    container_name: mongodb # Sets the name of the container
+    # restart: always # Specifies that the container should always be restarted if it stops
+    environment: # Defines environment variables for the container
+      MONGO_INITDB_ROOT_USERNAME: admin # Sets the MongoDB root username
+      MONGO_INITDB_ROOT_PASSWORD: password # Sets the MongoDB root password
+    ports: # Maps ports between the host and container
+      - 27018:27017 # Maps port 27018 on the host to port 27017 on the container, for now we use 27018 because on host machine there is mongodb already running on 27017
+  mongo-express: # This is the name of the mongo-express service
+    image: mongo-express # Specifies the Docker image to be used for the service
+    container_name: mongo-express # Sets the name of the container
+    # restart: always # Specifies that the container should always be restarted if it stops
+    environment: # Defines environment variables for the container
+      ME_CONFIG_MONGODB_SERVER: mongodb # Specifies the MongoDB server to connect to
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin # Sets the admin username for MongoDB
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password # Sets the admin password for MongoDB
+    ports: # Maps ports between the host and container
+      - 8081:8081 # Maps port 8081 on the host to port 8081 on the container
