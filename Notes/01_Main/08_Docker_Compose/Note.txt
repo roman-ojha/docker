@@ -17,6 +17,7 @@
 
     *) Command:
         -> docker-compose -f <file_name>.yaml up
+        -> docker compose -f <file_name>.yaml up
             -> -f: file
             -> up: start all the container that are in the file.
             -> After running the command we will see logs:
@@ -32,5 +33,21 @@
         -> docker-compose -f <file_name>.yaml up -d
             -> (run container in detached mode)
             
-        -> docker-compose -f <file_name>.yaml down
-            -> (to stop the running container, it will also remove the networks)
+        -> docker-compose down
+        -> docker compose down
+        -> docker compose -f <file_name>.yaml down
+            -> (to stop and remove the running container, it will also remove the networks)
+            
+        -> docker compose -f .\<file_name>.yaml logs
+            -> (to see all the logs that is running through the given compose file)
+        
+        -> docker compose -f .\<file_name>.yaml logs <container_name|id>
+            -> (to see all the logs that is running to the specific container)
+        
+        -> docker compose rm -f .\<file_name>.yaml
+            -> (to remove stopped container)
+            
+        -> NOTE: By default, named volumes in your compose file are not removed when you run docker compose down. If you want to remove the volumes, you need to add the --volumes flag.
+        
+
+=> Todo - More on Docker compose: https://docs.docker.com/compose/
