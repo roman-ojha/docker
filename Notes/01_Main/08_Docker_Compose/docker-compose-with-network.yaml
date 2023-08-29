@@ -9,8 +9,6 @@ services: # Defines the services to be created
       MONGO_INITDB_ROOT_PASSWORD: password # Sets the MongoDB root password
     ports: # Maps ports between the host and container
       - 27018:27017 # Maps port 27018 on the host to port 27017 on the container, for now we use 27018 because on host machine there is mongodb already running on 27017
-    networks: # Connect to the custom network
-      - mongo-network
   mongo-express: # This is the name of the mongo-express service
     image: mongo-express # Specifies the Docker image to be used for the service
     container_name: mongo-express # Sets the name of the container
@@ -21,9 +19,3 @@ services: # Defines the services to be created
       ME_CONFIG_MONGODB_ADMINPASSWORD: password # Sets the admin password for MongoDB
     ports: # Maps ports between the host and container
       - 8081:8081 # Maps port 8081 on the host to port 8081 on the container
-    networks: # Connect to the custom network
-      - mongo-network
-
-networks: # Define custom network
-  mongo-network:
-    driver: bridge # Use the bridge driver, which is a common choice for basic network isolation in Docker Compose setups.

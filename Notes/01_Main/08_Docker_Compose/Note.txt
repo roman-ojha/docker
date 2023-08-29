@@ -13,4 +13,24 @@
     -> Let's say you have 10 docker container that need to run to complete the application you can write all their run command in a docker Compose file.
     -> we have defined docker compose for 'mongo', 'mongo-express' application on './docker-compose.yaml' file.
     -> NOTE that by default docker compose will take care of creating a common Network for the docker compose services.
-    -> But if you want to specify it then you can do that using 'networks' attribute in './docker-compose.yaml'
+    -> But if you want to specify it then you can do that using 'networks' attribute and specified in './docker-compose-with-network.yaml' file.
+
+    *) Command:
+        -> docker-compose -f <file_name>.yaml up
+            -> -f: file
+            -> up: start all the container that are in the file.
+            -> After running the command we will see logs:
+            [+] Running 3/3
+             - Network 08_docker_compose_default  Created
+             - Container mongodb                  Created
+             - Container mongo-express            Created
+                -> Here we can see first it create the network '08_docker_compose_default' only after that it create container inside the network
+                -> So, we will see all the logs from all the container on this command where we will see like both the container is trying to run but 'mongo-express' container wont' be able to run the application until the mongodb container is fully running, only after the 'mongo-express' server will start listening without any error.
+
+            -> NOTE so if there are multiple container where one depend with another one to start in that case you can configure this in docker compose.
+
+        -> docker-compose -f <file_name>.yaml up -d
+            -> (run container in detached mode)
+            
+        -> docker-compose -f <file_name>.yaml down
+            -> (to stop the running container, it will also remove the networks)
