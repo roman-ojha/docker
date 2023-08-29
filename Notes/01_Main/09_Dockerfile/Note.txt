@@ -1,0 +1,14 @@
+*) Dockerfile
+    -> using this we will build our own docker image for our project.
+    -> EX: 
+        -> In this './01_Dockerfile.png' diagram we can see that, we have developed the javascript application, we have used the mongodb container now it is time to commit to git.
+        -> So we will simulate this steps in local environment
+        -> After commit you have CI that run it could be using 'Jenkins' or Github action.
+        -> So what doesn't Jenkins do in this application:
+            -> So when it build the application
+            -> it packages them in the docker image 
+            -> and then push is to docker Repository
+        -> So here we will simulate what Jenkins does with our application and how it packages into a Docker image on local environment.
+
+    *) What is Dockerfile:
+        -> In order build and docker image from an application we have to copy the content of the application on the docker files, it could be an artifact that we build.
