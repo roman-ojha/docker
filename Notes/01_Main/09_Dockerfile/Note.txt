@@ -1,4 +1,5 @@
 *) Dockerfile
+    -> https://docs.docker.com/engine/reference/builder/
     -> using this we will build our own docker image for our project.
     -> EX: 
         -> In this './01_Dockerfile.png' diagram we can see that, we have developed the javascript application, we have used the mongodb container now it is time to commit to git.
@@ -11,4 +12,9 @@
         -> So here we will simulate what Jenkins does with our application and how it packages into a Docker image on local environment.
 
     *) What is Dockerfile:
-        -> In order build and docker image from an application we have to copy the content of the application on the docker files, it could be an artifact that we build.
+        -> In order to build and docker image from an application we have to copy the content of the application on the docker files, it could be an artifact that we build and then we will going to configure it in order to do that we will going to use Bluprint for buildig Images which is called as a Dockerfile.
+        -> So, Dockerfile is the blueprint for creating Docker Images.
+        -> Here is the format of the Dockerfile:
+            # Comment
+            INSTRUCTION arguments
+    

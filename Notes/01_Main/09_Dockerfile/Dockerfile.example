@@ -1,0 +1,18 @@
+FROM hello-world
+# Or FROM Instruction is a parent Image from which you are build this new image
+
+RUN echo "we are running some # of cool things"
+RUN echo hello \
+# whitespace in instruction arguments, such as the commands following RUN, are preserved, so the following example prints hello world with leading whitespace as specified:
+RUN echo "\
+    hello\
+    world"
+
+# *) Parser directive
+# -> https://docs.docker.com/engine/reference/builder/#parser-directives
+# Parser directives are optional, and affect the way in which subsequent lines in a Dockerfile are handled. 
+# It is written in this form
+# <directive>=<value>
+# Following are the parse directive that are supported:
+# 1. syatax
+# 2. escape
