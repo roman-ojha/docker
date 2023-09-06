@@ -1,36 +1,16 @@
 *) To install Docker on an Ubuntu server, you can follow these steps:
     Update Package Lists:
         Open a terminal on your Ubuntu server and run the following command to ensure your package lists are up to date:
-            sudo apt update
-            Install Dependencies:
-
-    Install the required dependencies that allow apt to use packages over HTTPS:
-        sudo apt install apt-transport-https ca-certificates curl software-properties-common
-
-    Add Docker Repository:
-    Add the Docker repository to your system's package sources:
-
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-    Install Docker Engine:
-        Update the package lists again and install Docker:
-            sudo apt update
-            sudo apt install docker-ce docker-ce-cli containerd.io
-
-    Start and Enable Docker:
-        Start the Docker service and enable it to start on boot:
-            sudo systemctl start docker
-            sudo systemctl enable docker
+		-> sudo apt update
+	-> Install docker:
+		-> sudo apt install docker.io -y
+	-> Install dependencies:
+		-> sudo snap install docker 
+	-> Check installation:
+		-> sudo systemctl status docker
+		-> docker --version
 
     Verify Docker Installation:
         Check that Docker is installed and running:
             sudo docker --version
             sudo docker run hello-world
-
-    Manage Docker as a Non-Root User (Optional):
-    If you want to avoid using sudo with every Docker command, you can add your user to the docker group:
-            sudo usermod -aG docker $USER
-
-    Remember that you'll need to log out and back in for this group change to take effect.
-    That's it! You've successfully installed Docker on your Ubuntu server. You can now use Docker to create, run, and manage containers.
