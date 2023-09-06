@@ -1,0 +1,20 @@
+FROM hello-world
+
+# Each <src> may contain wildcards and matching will be done using Go's filepath.Match(https://golang.org/pkg/path/filepath#Match) rules. For example:
+# To add all files starting with "hom" on '/mydir/':
+COPY hom* /mydir/
+
+# In the example below, ? is replaced with any single character, e.g., "home.txt".
+COPY hom?.txt /mydir/
+
+# The <dest> is an absolute path, or a path relative to 'WORKDIR', into which the source will be copied inside the destination container.
+# The example below uses a relative path, and adds "test.txt" to '<WORKDIR>/relativeDir/'
+COPY test.txt relativeDir/
+
+# Whereas this example uses an absolute path, and adds "test.txt" to /absoluteDir/
+COPY test.txt /absoluteDir/
+
+# When copying files or directories that contain special characters (such as [ and ]), you need to escape those paths following the Golang rules to prevent them from being treated as a matching pattern. For example, to copy a file named arr[0].txt, use the following;
+COPY arr[[]0].txt /mydir/
+
+# Optionally 'COPY' accepts a flag '--from=<name>'' that can be used to set the source location to a previous build stage (created with 'FROM .. AS <name>') that will be used instead of a build context sent by the user. In case a build stage with a specified name can't be found an image with the same name is attempted to be used instead.
