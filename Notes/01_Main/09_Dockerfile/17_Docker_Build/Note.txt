@@ -18,3 +18,11 @@
 
     =>NOTE: if you want to rebuild the image you might first want to 'stop' the container and then remove the stopped container & then remove the image then build the new image
     => For more command: https://docs.docker.com/engine/reference/commandline/build/
+
+*) Tagging Image:
+    -> docker build -t roman/redis:latest .
+        -> -t = we want to add a tag inside this image
+        -> roman = docker username
+        -> radis = image name
+        -> latest = varsion
+            -> docker run roman/radis

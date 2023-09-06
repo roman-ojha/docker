@@ -1,0 +1,8 @@
+*) Pushing and PUlling a Docker Image from Docker Hub:
+    -> docker login (to login to docker hub)
+    -> docker tag <local_image_name:local_image_tag_name(version)> <username(repository_name)>/<image_name_for_remote>:<tag_name(version)_for_remote>
+        -> if we will not specify the 'tag_name_for_remote' then it will by default use the 'latest'.
+        -> EX: docker tag my-app:1.0 romanojha/my-app:latest
+        -> docker image (to see the newly created docker image)
+    
+    -> docker pull romanojha/my-app

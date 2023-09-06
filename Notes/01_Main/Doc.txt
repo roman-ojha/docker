@@ -53,15 +53,6 @@ NOTE: if we are using windows home os that we have to install virtual box and th
         -> docker create hello-world (this will create a 'hello-world' container)
 
 
-
-*) Tagging Image:
-    -> docker build -t roman/redis:latest .
-        -> -t = we want to add a tag inside this image
-        -> roman = docker username
-        -> radis = image name
-        -> latest = varsion
-            -> docker run roman/radis
-
     -> docker run -it alpine sh
         -> apk add --update redis (we can run the command that we had created inside the shell)
         -> docker commit -c 'CMD "redis-server"' <alpine image container id> (this says that, commit inside the container with startup command 'redis-server')
