@@ -1,0 +1,8 @@
+FROM hello-world
+
+# If you want to run your '<command>' without a shell then you must express the command as a JSON array and give the full path to the executable. This array form is the preferred format of CMD. Any additional parameters must be individually expressed as strings in the array:
+FROM ubuntu
+CMD ["/usr/bin/wc","--help"]
+
+# If you would like your container to run the same executable every time, then you should consider using ENTRYPOINT in combination with CMD. See ENTRYPOINT(https://docs.docker.com/engine/reference/builder/#entrypoint).
+# If the user specifies arguments to 'docker run' then they will override the default specified in 'CMD'.

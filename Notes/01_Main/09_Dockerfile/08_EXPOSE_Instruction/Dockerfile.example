@@ -1,0 +1,9 @@
+FROM hello-world
+
+# By default, EXPOSE assumes TCP. You can also specify UDP:
+EXPOSE 80/udp
+
+# To expose on both TCP and UDP, include two lines:
+EXPOSE 80/tcp
+EXPOSE 80/udp
+# Regardless of the EXPOSE settings, you can override them at runtime by using the -p flag. EX: docker run -p 80:80/tcp -p 80:80/udp

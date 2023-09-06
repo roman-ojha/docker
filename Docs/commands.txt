@@ -12,6 +12,7 @@
 -> docker ps -a (to get all the container which are running or which are not running)
 -> docker ps --all (to get all the container which are running or which are not running)
 -> docker run -p<host_port>:<container_port> <image_name> (to run the container with binding port from host to container port)
+-> docker run -p 80:80/<protocol> (run the container on port with given protocol like: 'tcp', 'udp')
 -> docker run --name <name_of_the_container> (specify name of the container that you want to run)
 -> docker logs <container_id> (to see all the logs that container is producing)
 -> docker logs <container_name> (to see all the logs of container by providing the container name that every container have unique name which you can use using 'docker ps')
