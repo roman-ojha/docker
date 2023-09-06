@@ -1,0 +1,14 @@
+FROM hello-world
+# *) Parser directive
+# -> https://docs.docker.com/engine/reference/builder/#parser-directives
+# Parser directives are optional, and affect the way in which subsequent lines in a Dockerfile are handled. 
+# It is written in this form
+# <directive>=<value>
+# Following are the parse directive that are supported:
+# 1. syatax
+# 2. escape
+# EX: Escape is some something that we can use to treat multiline instruction as a single instruction
+# escape=`
+# here now '`' will be treated as the escape
+# escape=\
+# here now '\' will be treated as a the escape
