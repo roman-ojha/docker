@@ -17,4 +17,8 @@
         -> Here is the format of the Dockerfile:
             # Comment
             INSTRUCTION arguments
+
+
+*) Setup Project:
+    -> docker build -t my-app:1.0 .
     
