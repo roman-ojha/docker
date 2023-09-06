@@ -1,0 +1,10 @@
+*) ENTRYPOINT Instruction:
+    -> https://docs.docker.com/engine/reference/builder/#entrypoint
+    -> 'ENTRYPOINT' has two forms:
+        1. The exec form, which is the preferred form:
+            -> ENTRYPOINT ["executable", "param1", "param2"]
+        2. The shell form:
+            -> ENTRYPOINT command param1 param2
+    -> An 'ENTRYPOINT' allows you to configure a container that will run as an executable.
+        -> For example, the following starts nginx with its default content, listening on port 80:
+            -> docker run -i -t --rm -p 80:80 nginx
