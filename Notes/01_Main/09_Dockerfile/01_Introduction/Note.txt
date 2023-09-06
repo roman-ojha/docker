@@ -1,0 +1,38 @@
+*) DockerFile:
+    -> A DockerFile is a blueprint for building a docker image
+    -> Ex:
+        -> if we are making a website and have files in github:
+            -> index.php
+            -> in.html
+            -> base.html
+            -> utils
+        -> and we are trying to run the website by installing:
+            -> apache 2 (server)
+                -> configure apache 
+            -> pull code from git
+            -> install other dependencies
+            -> restart the server
+        -> there is a chance that we will get an error because in those condition website developer did and in the condition that we are in right now in our pc that might will not match the requirement and will throw an error
+        -> to solve that problem we will create the DockerFile 
+        -> DockerFile container all the information that how to run the website in this example
+        -> So, Dockerfile contains all the info for running your software in a base container
+
+*) DockerFile --> Image:
+    => DockerFile contain plain text
+    => DockerFile request the dockerClient to create the image of the file
+    => DockerClient request the DockerServer to create the image of the file
+    => DockerServer will create a usable image
+    => DockerFile --> DockerClient --> DockerServer --> UsableImage
+
+*) How To create A custom Image?
+    -> step 1: Choose a base image
+    -> step 2: Run commands for your software
+    -> step 3: Spacify the base command
+
+*) Creating our own custom image:
+    -> first we will create a 'Dockerfile' file in project directory
+    -> we will start from alpine (alpine is the light weight linux distro)
+    -> and write some dockerfile
+    -> docker build . (to build the created image)
+        -> we will get the container id
+        -> docker run <Container Id> (to run the custom container)

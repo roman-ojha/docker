@@ -1,0 +1,18 @@
+*) Docker Build:
+    -> Docker build command is use to build the image from Dockerfile
+    *) Commands:
+        -> docker build . (build image with no specifying image name with 'Dockerfile' filename on root directory)
+        -> docker build -t <image-name:tag(version)> <path-to-dockerfile>
+            -> '-t': Specifies the name and optional tag for the image. EX: 'latest', 'v1.0'
+            -> <image-name:tag>: The name and tag you want to assign to the image.
+            -> <path-to-dockerfile>: The path to the directory containing the Dockerfile.
+        -> docker build -t <image-name:tag> -f <Dockerfile-name> <path-to-dockerfile-directory> (Building with a Different Dockerfile Name)
+            -> '-f': Specifies the name of the Dockerfile to use if it's not named Dockerfile.
+            -> EX: docker build -t roman:test -f .\Dockerfile.example .
+        -> docker build -t <image-name:tag> <git-repo-url> (You can build an image directly from a Git repository. Docker will clone the repo, locate the Dockerfile, and build the image.)
+        -> docker build --no-cache -t <image-name:tag> <path-to-dockerfile> (Build with Cache Disabling)
+    
+    *) Build Context and .dockerignore:
+        -> When you run 'docker build', the entire build context (all files in the build directory) is sent to the Docker daemon. You can use a '.dockerignore' file to exclude files or directories that you don't want to be included in the build context. This can improve build performance and reduce the image size.
+        
+    => For more command: https://docs.docker.com/engine/reference/commandline/build/
