@@ -15,4 +15,6 @@
     *) Build Context and .dockerignore:
         -> When you run 'docker build', the entire build context (all files in the build directory) is sent to the Docker daemon. You can use a '.dockerignore' file to exclude files or directories that you don't want to be included in the build context. This can improve build performance and reduce the image size.
         
+
+    =>NOTE: if you want to rebuild the image you might first want to 'stop' the container and then remove the stopped container & then remove the image then build the new image
     => For more command: https://docs.docker.com/engine/reference/commandline/build/

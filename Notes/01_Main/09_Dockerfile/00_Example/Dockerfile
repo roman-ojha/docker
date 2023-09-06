@@ -16,8 +16,17 @@ RUN mkdir -p /home/app
 COPY . /home/app
 # Copying all the folder & files from current directory to '/home/app'
 
+# COPY ./app /home/app
+# If you want to copy './app' folder directory files
+
+
+RUN cd /home/app && npm install
+# Installing 'node_modules' on the project using package.json
+
+EXPOSE 3000
+
 
 # Running Node server after that, we are able to run this command because Node is pre installed because of the base image
 # CMD is the entrypoint command, so this is the command that we want to exucute as an entrypoint
-CMD ["node","index.js"]
-# Start the app with "node index.js"
+CMD ["node","/home/app/index.js"]
+# Start the app with "node /home/app/index.js"

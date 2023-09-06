@@ -7,6 +7,8 @@
 
     -> docker exec -i -t <Container ID> sh (to go inside the shell of that container and run can other command as well)
             -> sh (it will run the shell terminal inside the given container)
+    -> docker exec -it <container_id> /bin/sh
+    -> docker exec -it <container_id> /bin/bash (interactive bash terminal)
     
     -> docker logs <container_name> | tail (get last part of the logs)
     

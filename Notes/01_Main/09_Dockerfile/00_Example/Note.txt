@@ -20,5 +20,16 @@
 
 
 *) Setup Project:
-    -> docker build -t my-app:1.0 .
+    -> './03_Process_of_Dockerfile_to_Repository.PNG'
+    -> For the Project example we have used the previous done Demo project on '../../07_Demo_Project' and build the image of our own nodejs project.
+    -> So for that we will going to create the Image on './Dockerfile' 
+        -> docker build -t my-app:1.0 .
+    -> After that we will going to commit the Project/App including Dockerfile in git.
+    -> After commit we will simulate the Jenkins server as well.
+        -> So, Jenkins takes the Dockerfile and build the Docker Image from Dockerfile (like we did)
+    -> So after it build the image we will share the image so that other developer on you team can also be able to use it for that we will going to push the Image on Docker Repository
+    -> After that some other developer can pull the Image from the Repository or development server can actually pull from there as well.
+    -> So, Because we have already created the 'mongo' & 'mongo-express' container in '../../07_Demo_Project' project.
+    -> Where we will create container of our own Custom Image that we build from './Dockerfile'
+        -> docker run my-app:1.0
     
