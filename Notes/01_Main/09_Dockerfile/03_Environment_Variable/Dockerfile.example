@@ -1,0 +1,23 @@
+FROM hello-world
+
+# *) Environment Variable
+# Environment variables (declared with the ENV statement) can also be used in certain instructions as variables to be interpreted by the Dockerfile. Escapes are also handled for including variable-like syntax into a statement literally.
+# Environment variables are notated in the Dockerfile either with $variable_name or ${variable_name}. They are treated equivalently and the brace syntax is typically used to address issues with variable names with no whitespace, like ${foo}_bar.
+# Environment variables are supported by the following list of instructions in the Dockerfile:
+# ADD
+# COPY
+# ENV
+# EXPOSE
+# FROM
+# LABEL
+# STOPSIGNAL
+# USER
+# VOLUME
+# WORKDIR
+# ONBUILD (when combined with one of the supported instructions above)
+
+# Environment variable substitution will use the same value for each variable throughout the entire instruction. In other words, in this example:
+ENV abc=hello
+ENV abc=bye def=${abc}
+ENV ghi=$abc
+# will result in 'def' having a value of 'hello', not 'bye'. However, 'ghi' will have a value of 'bye' because it is not part of the same instruction that set 'abc' to 'bye'.
