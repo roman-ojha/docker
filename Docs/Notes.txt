@@ -1,0 +1,2 @@
+*) Error: Unable to resolve the current Docker CLI context "default": context "default": context not found:
+	-> docker context use default

@@ -13,3 +13,8 @@
     -> docker logs <container_name> | tail (get last part of the logs)
     
     -> docker logs <container_name> -f (stream the logs in live)
+
+    -> to install package inside container you have 'apk'
+    	-> apk add <package_name>
+	-> apk --help
+	-> apk -h

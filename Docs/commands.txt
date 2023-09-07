@@ -58,6 +58,12 @@
         -> docker build -t <image-name:tag> <git-repo-url> (You can build an image directly from a Git repository. Docker will clone the repo, locate the Dockerfile, and build the image.)
         -> docker build --no-cache -t <image-name:tag> <path-to-dockerfile> (Build with Cache Disabling)
 
+*) Inside Container Terminal(shell/bash):
+    -> to install package inside container you have 'apk'
+    	-> apk add <package_name>
+	-> apk --help
+	-> apk -h
+
 *) For docker-compose file:
         => docker-compose up  (to execute docker-compose.yml file,docker-compose is deprecated)
         -> docker-compose -f <file_name>.yaml up (run docker compose with given file name)

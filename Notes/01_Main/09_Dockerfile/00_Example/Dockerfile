@@ -23,6 +23,9 @@ COPY . /home/app
 RUN cd /home/app && npm install
 # Installing 'node_modules' on the project using package.json
 
+RUN apk add --no-cache bash
+# NOTE: if you will not get bash as interactive terminal we cau use this instruction which will add bash on you container
+
 EXPOSE 3000
 
 
