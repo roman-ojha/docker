@@ -4,5 +4,8 @@
         -> if we will not specify the 'tag_name_for_remote' then it will by default use the 'latest'.
         -> EX: docker tag my-app:1.0 romanojha/my-app:latest
         -> docker image (to see the newly created docker image)
+    -> OR: Another command that we can use to create image is 'build' command which will also create the image and then we can push that image on Docker hub repository
     
     -> docker pull romanojha/my-app
+
+NOTE: on most of the cases we will use CI/CD pipeline to build the docker image and the push it to docker Repository.

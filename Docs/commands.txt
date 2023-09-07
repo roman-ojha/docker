@@ -32,6 +32,20 @@
 -> docker kill <CONTAINER ID> (if by commanding docker stop if container didn't responde and stop the container then we will kill or terminate that container)
 -> docker start -a <image_id> (this will start the container, -a(attached) display the output that contain inside the container
 )
+-> docker image history <image_name> (to see all the history about that image)
+
+*) Help flag:
+	-> we can use help flag to get all the list of command that is associated with the docker command
+	-> EX:
+		-> docker container --help
+		-> docker image --help
+		-> docker network --help
+		-> docker compose --help
+		-> ETC...
+	-> Example to use those commands like on docker container --help we can found 'logs' command to use logs we will:
+		-> docker logs <container_id>
+		-> OR: docker container logs <container_id>
+
 *) For Dockerfile
         -> docker build . (build image with no specifying image name with 'Dockerfile' filename on root directory)
         -> docker build -t <image-name:tag(version)> <path-to-dockerfile>
