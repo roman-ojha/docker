@@ -7,3 +7,11 @@
 		-> Now 'my-app' image will be pulled out from the for now private repository form AWS ECR.
 		-> And other two images 'mongo' & 'mongo-express' will be pulled out from the public DockerHub
 		-> So we will create the docker compose file('./app/docker-compose.yaml') to build the whole application images
+		-> Now to deploy the application on any server you must need to have './app/docker-compose.yaml' file to run the application on that server
+		-> And just run: docker compose -f .\docker-compose.yaml up -d
+
+	-> NOTE: to connect from the 'my-app' application we have to use thi URI: mongodb://admin:password@mongodb
+		-> we hare using 'mongodb' insted of 'localhost' because 'mongodb' is the container name and the service that we specify on './app/docker-compose.yaml'
+		-> we don't use 'localhost' because they are not in the same network and are in different container
+		-> so, if you want to learn more about this you can learn docker network
+		-> we don't even have to use port number because we have specify that on './app/docker-compose.yaml' file

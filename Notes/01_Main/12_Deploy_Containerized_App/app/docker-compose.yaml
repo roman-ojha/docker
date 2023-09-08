@@ -4,6 +4,10 @@ services:
     image: 681516236142.dkr.ecr.us-east-1.amazonaws.com/my-app:1.0
     # In order to be able to pull this private repoisitory image the environment where you executing this docker compose file has to be logged into he docker private repository
     # So it means that Server needs to login to pull from private repository.
+    ports:
+      - 3000:3000
+      # - <open_port_on_host_machine>:<port_of_container_listening_on|application_port_serves_on>
+    # we can configure Environment variable here as wee but we have added it on Dockerfile so we will not use it for now
   mongo:
     image: mongo
     container_name: mongodb
@@ -16,7 +20,7 @@ services:
   mongo-express:
     image: mongo-express
     container_name: mongo-express
-    restart: always
+    # restart: always
     environment:
       ME_CONFIG_MONGODB_SERVER: mongodb
       ME_CONFIG_MONGODB_ADMINUSERNAME: admin

@@ -25,7 +25,7 @@ app.get("/profile-picture", (req, res) => {
 });
 
 // use when starting application locally
-let mongoURI = "mongodb://admin:password@localhost:27018";
+let mongoURI = "mongodb://admin:password@mongodb";
 
 const client = new MongoClient(mongoURI, {
   serverApi: {
