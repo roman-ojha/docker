@@ -1,0 +1,44 @@
+*) Docker Volumes:
+	-> Docker volumes is used for data persistence.
+	-> Like for database or other statefull application in that case we will use Docker volumes.
+	-> './01_Docker_volumes.PNG'
+	-> Let's say Container runs on a Host and a container have a virtual file system where the data is stored let's say on '/var/lib/mysql/data', But here there is no persistent because if we will remove/delete/restart the container then the data on the container will also get removed and it will start as the initial state.
+	-> But we want to save the changes that is happening on the databases.
+	-> './02_How_Volumes_Used.PNG'
+	-> So, In Container we have Virtual file system and on a Host we will have Physical(Host) file system and the way Volumes works is that we plugs physical file system path, it could be a folder or directory so we will plug it into the container
+	-> It means that Folder in Physical host file system is mounted into the virtual file system of Docker.
+	-> './03_Data_Replication.PNG'
+	-> So, When Container writes to it's virtual file system then it will get replicated and automatically written on the Host file system and vice versa, It means that if we change something on the host file system it will automatically appears in the container as well.
+	-> So, even if the container restart even if it starts from a fresh state then it gets the data automatically from the host because the data is still there. and that's how data is populated on the start up of a container evertime we restart.
+	*) 3 Volume Types:
+		1) Host Volumes
+			-> './04_Host_Volumes.PNG'
+			-> There are different ways of creating docker volumes
+			-> Usually we will use 'docker run' command:
+				-> docker run -v <host_directory>:<container_directory>
+				-> EX: docker run -v /home/mount/data:/var/lib/mysql/data
+			-> This type of volumes is called Host Volumes where we mount host directory with the container directory.
+			-> So here we Deside where on the host file system the reference is made.
+
+		2) Anonymous Volumes
+			-> './05_Anonymous_Volumes.PNG'
+			-> Here we create a volume just by referencing container directory.
+			-> Here we don't specify on which directory host should mounted.
+			-> That will take care by docker itself.
+			-> So the directory is automatically created by docker in ex: '/var/lib/docker/volumes/<random_hash>/_data'.
+			-> So for each container there will be a folder generated that get's mounted automatically to the container.
+			-> And this type of volume is called Anonymous Volumes
+			-> Command: docker run -v <container_directory>
+
+		3) Named Volumes
+			-> './06_Named_Volumes.PNG'
+			-> It is the improvenment of anonymous volume where we specifies the name of that folder on the host filesystem.
+			-> Command: docker run -v <host_folder_name>:<container_directory>
+			-> In this case we can reference the volume by name
+
+	-> The most used and on production used volumes is Named volumes
+	-> Becaused of it's managing the directory of the host by it self.
+
+	*) Docker volumes in docker-compose:
+		-> './07_Volume_Docker_Compose.PNG'
+		-> './mongodb-compose.yaml'
