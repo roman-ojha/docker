@@ -1,0 +1,42 @@
+*) Push into AWS ECR(Amazon Elastic Container Registry):
+	-> it is a private repository
+	Step 1: Create Docker Registry:
+		-> First we will create private repository also called docker registry on AWS:
+			-> https://us-east-1.console.aws.amazon.com/ecr/
+		-> After creating repository on AWS ECR you have to save images in different tags(versions) of the same image, means that You 1 repository only for one image in ECR
+
+	Step 2: Build Image from './app' project:
+		-> docker build -t my-app:1.0 .
+
+	Step 3: Push into pivate repo:
+		*> Pre-requisites:
+			1. AWS CLI
+			2. Credentials should be configured for it
+			-> resources: https://youtu.be/nooY45x12Qw
+		-> First we have to login into private repository using docker login
+		-> If Docker image is build and push from Jenkins server or github action then you have to given Jenkins credentials to login into the repository
+		-> So every repository service provider like AWS ECR provide their docker login command like: (Get-ECRLoginCommand).Password | docker login --username AWS --password-stdin 681516236142.dkr.ecr.us-east-1.amazonaws.com
+		-> To push to the private repository we have to provide <full_domain_name>/<image>:<tag>
+			-> EX: docker tag my-app:1.0 681516236142.dkr.ecr.us-east-1.amazonaws.com/my-app:1.0
+		-> Now push that image into AWS ECR:
+			-> docker push 681516236142.dkr.ecr.us-east-1.amazonaws.com/my-app:1.0
+
+	Step 4: Make some changes to the App, rebuild and push a new version to AWS repo:
+		-> First Make Changes to you app
+		-> Then Build with new version:
+			->  docker build -t my-app:1.1 .
+		-> Then Tag: docker tag my-app:1.1 681516236142.dkr.ecr.us-east-1.amazonaws.com/my-app:1.1
+		-> Then Push: docker push 681516236142.dkr.ecr.us-east-1.amazonaws.com/my-app:1.1
+
+
+*) Image Naming in Docker registries:
+	-> While pushing an image you image naming should be like this:
+			-> <registry_domain>/<image_name>:tag
+	-> And we have to pull the image with the same name that we specify
+	*) In DockerHub:
+		-> But what about image like 'mongo', 'mongo-express' we don't specify the domain name, actually the default name of the image for 'mongo' is 'docker.io/library/mongo:<tag>'
+		-> Where 'mongo' is the shorthand format of the image, because we are woking with dockerhub we can use a shortcut
+
+	*) In AWS ECR:
+		-> but in case of AWS we will provide the domain name and then image for doing pull/push
+		-> EX: docker pull 681516236142.dkr.ecr.us-east-1.amazonaws.com/my-app:latest

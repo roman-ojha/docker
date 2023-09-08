@@ -30,9 +30,9 @@
 -> docker inspect <image_id> (to see all the image information and it's metadata)
 -> docker run --env <key>=<value> (to change the already set value in image)
 -> docker kill <CONTAINER ID> (if by commanding docker stop if container didn't responde and stop the container then we will kill or terminate that container)
--> docker start -a <image_id> (this will start the container, -a(attached) display the output that contain inside the container
-)
+-> docker start -a <image_id> (this will start the container, -a(attached) display the output that contain inside the container)
 -> docker image history <image_name> (to see all the history about that image)
+-> docker tag <image_name_that_you_want_to_tag>:<version> <domain_name>/<image_name_that_you_want_to_create>:<version> (create tagged image to push into repository)
 
 *) Help flag:
 	-> we can use help flag to get all the list of command that is associated with the docker command
