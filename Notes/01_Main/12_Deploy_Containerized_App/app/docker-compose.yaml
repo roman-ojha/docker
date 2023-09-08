@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  my-app: # this is our own image that we create form this project and push into AWS ECR private repository
+    image: 681516236142.dkr.ecr.us-east-1.amazonaws.com/my-app:1.0
+    # In order to be able to pull this private repoisitory image the environment where you executing this docker compose file has to be logged into he docker private repository
+    # So it means that Server needs to login to pull from private repository.
+  mongo:
+    image: mongo
+    container_name: mongodb
+    # restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - 27018:27017
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+    ports:
+      - 8081:8081

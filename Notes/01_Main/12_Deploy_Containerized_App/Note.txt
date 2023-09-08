@@ -1,0 +1,9 @@
+*) Deploy The Containerized Application:
+	-> We have learnd to push image into repository
+	-> Now we will try to deploy our containerized application
+	-> You might want to deploy application on development server or production server or any other environment for that we will going to use docker compose to deploy that application
+	*) Deploy into server:
+		-> Now we to deploy the previous build application on '../07_Demo_Project' we have to run image that we push into the private/public repository which is let's say 'my-app' image with 'mongo' & 'mongo-express' image
+		-> Now 'my-app' image will be pulled out from the for now private repository form AWS ECR.
+		-> And other two images 'mongo' & 'mongo-express' will be pulled out from the public DockerHub
+		-> So we will create the docker compose file('./app/docker-compose.yaml') to build the whole application images
