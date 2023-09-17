@@ -33,6 +33,7 @@
 -> docker start -a <image_id> (this will start the container, -a(attached) display the output that contain inside the container)
 -> docker image history <image_name> (to see all the history about that image)
 -> docker tag <image_name_that_you_want_to_tag>:<version> <domain_name>/<image_name_that_you_want_to_create>:<version> (create tagged image to push into repository)
+-> docker <stop|start|rm|rmi|...> <container_name|image_name|id> <container_name|image_name|id> ... (run docker command on multiple container & images at the same time) 
 
 *) Help flag:
 	-> we can use help flag to get all the list of command that is associated with the docker command
@@ -59,10 +60,17 @@
         -> docker build --no-cache -t <image-name:tag> <path-to-dockerfile> (Build with Cache Disabling)
 
 *) Inside Container Terminal(shell/bash):
-    -> to install package inside container you have 'apk'
-    	-> apk add <package_name>
-	-> apk --help
-	-> apk -h
+	*) Install packages inside container:
+		-> cat /etc/os-release (check which os is running on container)
+		-> if Ubuntu or Debian, use the apt command:
+			-> apt update
+			-> apt install <package>
+		-> if CentOS or Red Hat, use the Yum command:
+			-> yum install <package>
+		-> Alpine Linux, use the apk command:
+			-> apk add <package_name>
+			-> apk --help
+			-> apk -h
 
 *) For docker-compose file:
         => docker-compose up  (to execute docker-compose.yml file,docker-compose is deprecated)
@@ -77,3 +85,5 @@
         -> docker compose -f .\<file_name>.yaml logs (to see all the logs that is running through the given compose file)
         -> docker compose -f .\<file_name>.yaml logs <container_name|id> (to see all the logs that is running to the specific container)
         -> docker compose rm -f .\<file_name>.yaml (to remove stopped container)
+	-> docker compose build (to build the images from the docker-compose.yml file)
+	-> docker compose build && docker compose up -d (to build image and run those images)
