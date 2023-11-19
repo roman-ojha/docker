@@ -1,39 +1,63 @@
 => docker --version (to see locally available docker version)
--> docker pull <image_name> (download latest version of image from docker hub)
--> docker pull <image_name>:<version> (download given version of iamge from docker hub)
--> docker images (to check all the existing images locally)
--> docker run <image_name> (to run the given image if exist locally if not then pull from docker hub and then run it) EX: [docker pull + docker start] || [docker create + docker start]
--> docker run <image_name>:<version> (to run the given image with specific version if exist locally if not then pull from docker hub and then run it)
--> docker run -e <key>=<value> <container_name|id> (set the environment variable while running the container)
--> docker run --net <network_name> <container_name|id> (set the container network while running the container)
--> docker stop <CONTAINER_ID|Container_name> (to stop the running container)
--> docker start <CONTAINER_ID|Container_name> (to start the stopped container)
--> docker ps (to list out all the running container)
--> docker ps -a (to get all the container which are running or which are not running)
--> docker ps --all (to get all the container which are running or which are not running)
--> docker run -p<host_port>:<container_port> <image_name> (to run the container with binding port from host to container port)
--> docker run -p 80:80/<protocol> (run the container on port with given protocol like: 'tcp', 'udp')
--> docker run --name <name_of_the_container> (specify name of the container that you want to run)
--> docker logs <container_id> (to see all the logs that container is producing)
--> docker logs <container_name> (to see all the logs of container by providing the container name that every container have unique name which you can use using 'docker ps')
--> docker exec -it <container_id|name> /bin/bash (get terminal of the running container)
--> docker logs <container_name> | tail (get last part of the logs)
--> docker logs <container_name> -f (stream the logs in live)
-=> docker rm <container_id> (to remove container)
-=> docker rm -f <container_id> (force remove container)
-=> docker rmi <image_id> (to remove image)
-=> docker rmi -f <image_id> (force remove image)
--> docker rm <container_id> (Removes a stopped container) 
--> docker rm -f <container_id> (Forces the removal of a running container (uses SIGKILL))
--> docker rmi <image_id> (Removes an image # Will fail if there is a running instance of that image i.e. container) 
--> docker rmi -f <image_id> (Forces removal of image even if it is referenced in multiple repositories, # i.e. same image id given multiple names/tags, # Will still fail if there is a docker container referencing image) 
--> docker inspect <image_id> (to see all the image information and it's metadata)
--> docker run --env <key>=<value> (to change the already set value in image)
--> docker kill <CONTAINER ID> (if by commanding docker stop if container didn't responde and stop the container then we will kill or terminate that container)
--> docker start -a <image_id> (this will start the container, -a(attached) display the output that contain inside the container)
--> docker image history <image_name> (to see all the history about that image)
--> docker tag <image_name_that_you_want_to_tag>:<version> <domain_name>/<image_name_that_you_want_to_create>:<version> (create tagged image to push into repository)
 -> docker <stop|start|rm|rmi|...> <container_name|image_name|id> <container_name|image_name|id> ... (run docker command on multiple container & images at the same time) 
+
+*) Docker Container
+	-> docker ps (to list out all the running container)
+	-> docker ps -a (to get all the container which are running or which are not running)
+	-> docker ps --all (to get all the container which are running or which are not running)
+	-> docker start <CONTAINER_ID|Container_name> (to start the stopped container)
+	-> docker stop <CONTAINER_ID|Container_name> (to stop the running container)
+	-> docker kill <CONTAINER ID> (if by commanding docker stop if container didn't responde and stop the container then we will kill or terminate that container)
+
+*) Docker Images
+	-> docker image history <image_name> (to see all the history about that image)
+	-> docker images (to check all the existing images locally)
+	-> docker start -a <image_id> (this will start the container, -a(attached) display the output that contain inside the container)
+	-> docker tag <image_name_that_you_want_to_tag>:<version> <domain_name>/<image_name_that_you_want_to_create>:<version> (create tagged image to push into repository)
+	-> docker inspect <image_id> (to see all the image information and it's metadata)
+
+*) Docker Run
+	-> docker run -p<host_port>:<container_port> <image_name> (to run the container with binding port from host to container port)
+	-> docker run -p 80:80/<protocol> (run the container on port with given protocol like: 'tcp', 'udp')
+	-> docker run --name <name_of_the_container> (specify name of the container that you want to run)
+	-> docker run --env <key>=<value> (to change the already set value in image)
+	-> docker run <image_name> (to run the given image if exist locally if not then pull from docker hub and then run it) EX: [docker pull + docker start] || [docker create + docker start]
+	-> docker run -e <key>=<value> <container_name|id> (set the environment variable while running the container)
+	-> docker run --net <network_name> <container_name|id> (set the container network while running the container)
+	-> docker run -d <image_name> (run image in detached mode) 
+	-> docker run <image_name>:<version> (to run the given image with specific version if exist locally if not then pull from docker hub and then run it)
+
+*) Docker Remove
+	*) Container
+		-> docker rm <container_id_1> <container_id_2> ... (Removes a stopped container) 
+		-> docker rm -f <container_id_1> <container_id_2> ... (Forces the removal of a running container (uses SIGKILL))
+
+	*) Images
+		=> docker rmi <image_id_1> <image_id_2> ... (to remove image)
+		=> docker rmi -f <image_id_1> <image_id_2> ... (force remove image)
+		-> docker rmi <image_id_1> <image_id_2> ... (Removes an image # Will fail if there is a running instance of that image i.e. container) 
+		-> docker rmi -f <image_id_1> <image_id_2> ... (Forces removal of image even if it is referenced in multiple repositories, # i.e. same image id given multiple names/tags, # Will still fail if there is a docker container referencing image) 
+
+*) Docker Logs & Exec
+	-> docker exec -it <container_id|name> /bin/bash (get terminal of the running container)
+	-> docker logs <container_id> (to see all the logs that container is producing)
+	-> docker logs <container_name> (to see all the logs of container by providing the container name that every container have unique name which you can use using 'docker ps')
+	-> docker logs <container_name> | tail (get last part of the logs)
+	-> docker logs <container_name> -f (stream the logs in live)
+
+*) Docker Pull
+	-> docker pull <image_name> (download latest version of image from docker hub)
+	-> docker pull <image_name>:<version> (download given version of iamge from docker hub)
+
+*) Docker Volume Command:
+	-> docker run -v <host_directory>:<container_directory> (mount host volume with container volume on docker run)
+	-> docker run -v <container_directory> (mount container volume on anonymous volume path of host machine)
+	-> Command: docker run -v <host_folder_name>:<container_directory> (name host volume folder while mounting with anonymous volume)
+	-> docker volume inspect <volume_name> (Display detailed information on one or more volumes)
+	-> docker volume ls (List volumes)
+	-> docker volume prune (Remove all unused local volumes)
+	-> docker volume rm <volume_name> (Remove one or more volumes. You cannot remove a volume that is in use by a container.)
+	-> docker volume create --help (you can see command to create new volume)
 
 *) Help flag:
 	-> we can use help flag to get all the list of command that is associated with the docker command
@@ -73,17 +97,20 @@
 			-> apk -h
 
 *) For docker-compose file:
-        => docker-compose up  (to execute docker-compose.yml file,docker-compose is deprecated)
-        -> docker-compose -f <file_name>.yaml up (run docker compose with given file name)
-        -> docker compose -f <file_name>.yaml up
-        => docker-compose up -d
-                -> -d : detached
-                -> (execute docker-compose.yml and run in background)
-        => docker-compose down
-        => docker compose down
-        => docker compose -f <file_name>.yaml down (to stop and remove the running container, it will also remove the networks)
-        -> docker compose -f .\<file_name>.yaml logs (to see all the logs that is running through the given compose file)
-        -> docker compose -f .\<file_name>.yaml logs <container_name|id> (to see all the logs that is running to the specific container)
-        -> docker compose rm -f .\<file_name>.yaml (to remove stopped container)
+	=> docker-compose up  (to execute docker-compose.yml file,docker-compose is deprecated)
+	-> docker-compose -f <file_name>.yaml up (run docker compose with given file name)
+	-> docker compose -f <file_name>.yaml up
+	=> docker-compose up -d
+			-> -d : detached
+			-> (execute docker-compose.yml and run in background)
+	=> docker-compose down
+	=> docker compose down
+	=> docker compose -f <file_name>.yaml down (to stop and remove the running container, it will also remove the networks)
+	-> docker compose -f .\<file_name>.yaml logs (to see all the logs that is running through the given compose file)
+	-> docker compose -f .\<file_name>.yaml logs <container_name|id> (to see all the logs that is running to the specific container)
+	-> docker compose rm -f .\<file_name>.yaml (to remove stopped container)
 	-> docker compose build (to build the images from the docker-compose.yml file)
 	-> docker compose build && docker compose up -d (to build image and run those images)
+	-> docker compose -f <file_name>.yaml build (to build image from given compose file name)
+	-> docker compose -f <file_name>.yml push (to push all of the images build from compose file to cloud repository)
+	-> docker compose up -e <key>=<value> (to add environment variables in docker compose command)

@@ -18,7 +18,7 @@
 				-> docker run -v <host_directory>:<container_directory>
 				-> EX: docker run -v /home/mount/data:/var/lib/mysql/data
 			-> This type of volumes is called Host Volumes where we mount host directory with the container directory.
-			-> So here we Deside where on the host file system the reference is made.
+			-> So here we Decide where on the host file system the reference is made.
 
 		2) Anonymous Volumes
 			-> './05_Anonymous_Volumes.PNG'
@@ -32,12 +32,12 @@
 
 		3) Named Volumes
 			-> './06_Named_Volumes.PNG'
-			-> It is the improvenment of anonymous volume where we specifies the name of that folder on the host filesystem.
+			-> It is the improvement of anonymous volume where we specifies the name of that folder on the host filesystem.
 			-> Command: docker run -v <host_folder_name>:<container_directory>
 			-> In this case we can reference the volume by name
 
 	-> The most used and on production used volumes is Named volumes
-	-> Becaused of it's managing the directory of the host by it self.
+	-> Because of it's managing the directory of the host by it self.
 	-> So if container dies and get restart it again all the replication done on Host storage will get replicated on the container and all the changes that happen on the container db will get replicated on the Host storage
 
 	*) Docker volumes in docker-compose:

@@ -15,6 +15,6 @@ services:
 # After the end of services we will define the list of volumes all the volumes that we have defined
 volume:
   # here we will define the list of volumes that we want to mount to the container
-  # and on the containe level or on the 'services' level we will define under which path that specific volume can be mounted
-  # and the benefit of that is you can mount a reference of the same folder on the host to more then one containers and that would be beneficial if those container needs to share the data. in that case we will mount the same volume name reference to two different containers and you can mount to to different path inside the container 
+  # and on the container level or on the 'services' level we will define under which path that specific volume can be mounted
+  # and the benefit of that is you can mount a reference of the same folder on the host to more then one containers and that would be beneficial if those container needs to share the data. in that case we will mount the same volume name reference to two different containers and you can mount to to different path inside the container
   db-data
