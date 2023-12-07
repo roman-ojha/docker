@@ -114,3 +114,5 @@
 	-> docker compose -f <file_name>.yaml build (to build image from given compose file name)
 	-> docker compose -f <file_name>.yml push (to push all of the images build from compose file to cloud repository)
 	-> docker compose up -e <key>=<value> (to add environment variables in docker compose command)
+	-> docker compose ps (list all running container of given docker compose yml file)
+	-> docker compose logs (logs of all running container from given docker compose file)

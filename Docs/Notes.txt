@@ -2,3 +2,10 @@
 	-> docker context use default
 	
 *) Access host machine localhost: 'host.docker.internal'
+
+
+*) Communicate from one Running container To Running another container app:
+	-> if you are build image from 'docker-compose.yml' file
+	-> Then all of the services will be Running on the same Docker network
+	-> So because of that you can use the container name as the host name to connect
+	-> It means that I you want to communicate with some other service like from 'express' app to 'django' app and those service are on the same 'docker-compose.yml' file then they are Running on the same network so you can use service container name to as a HOST like 'localhost' in this case 'container_name' is the host to communicate

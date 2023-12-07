@@ -17,5 +17,12 @@ services: # Defines the services to be created
       ME_CONFIG_MONGODB_SERVER: mongodb # Specifies the MongoDB server to connect to
       ME_CONFIG_MONGODB_ADMINUSERNAME: admin # Sets the admin username for MongoDB
       ME_CONFIG_MONGODB_ADMINPASSWORD: password # Sets the admin password for MongoDB
+      # Another way of adding environment variable Getting value from environment variable or '.env' file
+      # POSTGRES_DB: ${USER_SERVICE_DATABASE_NAME}
+      # POSTGRES_USER: ${USER_SERVICE_DATABASE_USER}
+      # POSTGRES_PASSWORD: ${USER_SERVICE_DATABASE_PASSWORD}
+    # Another way of adding environment variable by passing .env filename
+    env_file:
+      - .env
     ports: # Maps ports between the host and container
       - 8081:8081 # Maps port 8081 on the host to port 8081 on the container
