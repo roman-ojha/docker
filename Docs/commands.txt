@@ -15,6 +15,8 @@
 	-> docker start -a <image_id> (this will start the container, -a(attached) display the output that contain inside the container)
 	-> docker tag <image_name_that_you_want_to_tag>:<version> <domain_name>/<image_name_that_you_want_to_create>:<version> (create tagged image to push into repository)
 	-> docker inspect <image_id> (to see all the image information and it's metadata)
+	-> docker rmi $(docker images -f "dangling=true" -q) (to remove all the dangling/non-tagged images)
+	-> docker rmi $(docker images -a -q) (to remove all)
 
 *) Docker Run
 	-> docker run -p<host_port>:<container_port> <image_name> (to run the container with binding port from host to container port)
@@ -53,6 +55,8 @@
 	-> docker run -v <host_directory>:<container_directory> (mount host volume with container volume on docker run)
 	-> docker run -v <container_directory> (mount container volume on anonymous volume path of host machine)
 	-> Command: docker run -v <host_folder_name>:<container_directory> (name host volume folder while mounting with anonymous volume)
+		-> EX: for windows:
+			-> docker run -v ${pwd}:/app (mount current directory of host machine with container directory)
 	-> docker volume inspect <volume_name> (Display detailed information on one or more volumes)
 	-> docker volume ls (List volumes)
 	-> docker volume prune (Remove all unused local volumes)

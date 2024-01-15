@@ -9,3 +9,24 @@
 	-> Then all of the services will be Running on the same Docker network
 	-> So because of that you can use the container name as the host name to connect
 	-> It means that I you want to communicate with some other service like from 'express' app to 'django' app and those service are on the same 'docker-compose.yml' file then they are Running on the same network so you can use service container name to as a HOST like 'localhost' in this case 'container_name' is the host to communicate
+	
+
+*) Run command inside container using docker compose:
+	services:
+		<name>
+			container_name: <name>
+			image: <image_name>:tag
+			command: ["<command>", "<arg1>", "<arg2>"]
+			# OR:
+			command: >
+				<multiline_command>
+
+*) Run files like 'bash' or 'sh' by default inside container using docker compose:
+	services:
+		<name>
+			container_name: <name>
+			image: <image_name>:tag
+			volumes:
+				- ./<path_to_file>/<file_name>:/docker-entrypoint-initdb.d/<file_name>
+				- ./<path_to_folder>:/docker-entrypoint-initdb.d/
+				# execute all the files inside folder sequentially
