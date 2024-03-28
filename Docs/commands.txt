@@ -1,6 +1,8 @@
 => docker --version (to see locally available docker version)
 -> docker <stop|start|rm|rmi|...> <container_name|image_name|id> <container_name|image_name|id> ... (run docker command on multiple container & images at the same time) 
 
+-> docker init (initialize the docker in the current project directory and configure the docker files for the project)
+
 *) Docker Container
 	-> docker ps (to list out all the running container)
 	-> docker ps -a (to get all the container which are running or which are not running)
@@ -120,3 +122,4 @@
 	-> docker compose up -e <key>=<value> (to add environment variables in docker compose command)
 	-> docker compose ps (list all running container of given docker compose yml file)
 	-> docker compose logs (logs of all running container from given docker compose file)
+	-> docker compose up --build (to build and run the container from given compose file)
